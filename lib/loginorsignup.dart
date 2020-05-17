@@ -7,12 +7,15 @@ class Loginorsignup extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery. of(context). size. width;
+    double height = MediaQuery. of(context). size. height;
     return Scaffold(
       backgroundColor: const Color(0xffffffff),
       body: Center(
         child: Container(
-            width: 800.0,
-            height: 800.0,
+
+            width: width,
+            height: height,
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: const AssetImage('assets/bg1.gif'),
