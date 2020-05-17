@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 
-class googleoremail extends StatelessWidget {
-  googleoremail({
+class Googleoremail extends StatelessWidget {
+
+  Googleoremail({
     Key key,
   }) : super(key: key);
   @override

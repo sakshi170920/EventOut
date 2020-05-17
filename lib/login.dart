@@ -3,8 +3,8 @@ import 'dart:ui' as ui;
 import 'package:adobe_xd/blend_mask.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class Artboard2 extends StatelessWidget {
-  Artboard2({
+class Login extends StatelessWidget {
+  Login({
     Key key,
   }) : super(key: key);
   @override

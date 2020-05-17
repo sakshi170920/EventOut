@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 
-class loginorsignup extends StatelessWidget {
-  loginorsignup({
+class Loginorsignup extends StatelessWidget {
+  Loginorsignup({
     Key key,
   }) : super(key: key);
   @override
