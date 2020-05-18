@@ -18,7 +18,7 @@ class Loginorsignup extends StatelessWidget {
             height: height,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: const AssetImage('assets/bg1.gif'),
+                image: const AssetImage('assets/back.jpg'),
                 fit: BoxFit.cover,
 
               ),
@@ -97,15 +97,19 @@ class Loginorsignup extends StatelessWidget {
                       offset: Offset(277.57, 19.38),
                       child: SizedBox(
                         width: 218.0,
-                        child: Text(
-                          'Stay organized with\nprojects and teams',
-                          style: TextStyle(
-                            fontFamily: 'Helvetica',
-                            fontSize: 20.889999389648438,
-                            color: const Color(0xffff5f7a),
-                            height: 1.8321566023664637,
+                        child: Container(
+                          margin: const EdgeInsets.only(right: 20.0),
+                          child: Text(
+
+                            'Stay organized with\nprojects and teams',
+                            style: TextStyle(
+                              fontFamily: 'Helvetica',
+                              fontSize: 20.889999389648438,
+                              color: const Color(0xffff5f7a),
+                              height: 1.8321566023664637,
+                            ),
+                            textAlign: TextAlign.right,
                           ),
-                          textAlign: TextAlign.right,
                         ),
                       ),
                     ),
