@@ -1,169 +1,245 @@
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'dart:ui' as ui;
+import 'package:phpadmingetdata/password.dart';
+
 
 class Googleoremail extends StatelessWidget {
-  Googleoremail({
-    Key key,
-  }) : super(key: key);
+  Future navigateToPassword(context) async {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => Password()  ));
+  }
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery. of(context). size. width;
-    double height = MediaQuery. of(context). size. height;
-    return Center(
-      child: Container(
-
-          width: width,
-          height: height,
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      body: SafeArea(
+        child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: const AssetImage('assets/bg1.gif'),
+              image: const AssetImage('assets/back.jpg'),
               fit: BoxFit.cover,
             ),
           ),
+          child: Column(
+            children: <Widget>[
+              Expanded(
+                flex: 1,
+                child: Container(
 
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Scaffold(
-
-            backgroundColor: const Color(0xffffffff),
-
-            body: Stack(
-              children: <Widget>[
-                Transform.translate(
-                  offset: Offset(886.34, -0.5),
-                  child: Stack(
-                    children: <Widget>[
-                      Transform.translate(
-                        offset: Offset(-1065.34, -0.5),
-
-                      ),
-                      Transform.translate(
-                        offset: Offset(-834.84, 220.88),
-                        child: Container(
-                          width: 353.0,
-                          height: 342.0,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12.0),
-                            color: const Color(0x80ffffff),
-                          ),
-                        ),
-                      ),
-                      Transform.translate(
-                        offset: Offset(-807.34, 280.5),
-                        child: Container(
-                          width: 298.0,
-                          height: 51.0,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(22.0),
-                            color: const Color(0xffffffff),
-                          ),
-                        ),
-                      ),
-                      Transform.translate(
-                        offset: Offset(-807.38, 469.39),
-                        child: Container(
-                          width: 298.0,
-                          height: 51.0,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(22.0),
-                            color: const Color(0xffffffff),
-                          ),
-                        ),
-                      ),
-                      Transform.translate(
-                        offset: Offset(-722.31, 296.67),
-                        child: Text(
-                          'Login with Google',
-                          style: TextStyle(
-                            fontFamily: 'MyriadPro-Regular',
-                            fontSize: 20,
-                            color: const Color(0xff000000),
-                            height: 1.2,
-                          ),
-                          textAlign: TextAlign.left,
-                        ),
-                      ),
-                      Transform.translate(
-                        offset: Offset(-781.54, 293.65),
-                        child: Text(
-                          'G',
-                          style: TextStyle(
-                            fontFamily: 'MyriadPro-Regular',
-                            fontSize: 24,
-                            color: const Color(0xff000000),
-                            height: 1.2000000476837158,
-                          ),
-                          textAlign: TextAlign.left,
-                        ),
-                      ),
-                      Transform.translate(
-                        offset: Offset(-744.93, 485.36),
-                        child: Text(
-                          'Continue with email',
-                          style: TextStyle(
-                            fontFamily: 'MyriadPro-Regular',
-                            fontSize: 20,
-                            color: const Color(0xff000000),
-                            height: 1.2,
-                          ),
-                          textAlign: TextAlign.left,
-                        ),
-                      ),
-                      Transform.translate(
-                        offset: Offset(-789.34, 447.5),
-                        child: Container(
-                            width: 261.0,
-                            height: 3.0,
-                            color: const Color(0xffffffff)),
-                      ),
-                      Transform.translate(
-                        offset: Offset(-789.03, 359.66),
-                        child: Container(
-                            width: 104.9,
-                            height: 3.0,
-                            color: const Color(0xffffffff)),
-                      ),
-                      Transform.translate(
-                        offset: Offset(-670.89, 352.16),
-                        child: Text(
-                          'OR',
-                          style: TextStyle(
-                            fontFamily: 'MyriadPro-Regular',
-                            fontSize: 20,
-                            color: const Color(0xffffffff),
-                            height: 1.2,
-                          ),
-                          textAlign: TextAlign.left,
-                        ),
-                      ),
-                      Transform.translate(
-                        offset: Offset(-633.01, 359.66),
-                        child: Container(
-                            width: 104.9,
-                            height: 3.0,
-                            color: const Color(0xffffffff)),
-                      ),
-                      Transform.translate(
-                        offset: Offset(-793.73, 385.74),
-                        child: Text(
-                          'Email Address',
-                          style: TextStyle(
-                            fontFamily: 'MyriadPro-Regular',
-                            fontSize: 16.425090789794922,
-                            color: const Color(0xff000000),
-                            height: 1.2000000464496339,
-                          ),
-                          textAlign: TextAlign.left,
-                        ),
-                      ),
-                    ],
-                  ),
                 ),
-              ],
-            ),
+              ),
+              Expanded(
+                flex: 2,
+                child: Container(
+
+                  margin: EdgeInsets.fromLTRB(30, 40, 30, 40),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12.0),
+                    color: const Color(0x80ffffff),
+
+                  ),
+
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          width: double.infinity,
+                          height: 1,
+                        ),
+
+                        Expanded(
+                          flex: 4,
+                          child:
+                          Container(
+
+                            margin: EdgeInsets.all(9),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(25),
+                              color: Colors.white,
+
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: <Widget>[
+                                Text(
+                                  'G',
+                                  style: TextStyle(
+                                    fontFamily: 'MyriadPro-Regular',
+                                    fontSize: 24,
+                                    color: const Color(0xff000000),
+
+                                  ),
+                                  textAlign: TextAlign.left,
+                                ),
+                                Align(
+                                  alignment: Alignment.centerRight,
+                                  child: FlatButton(
+                                    onPressed: (){
+
+                                    },
+                                    child: Text(
+                                      'Login with Google',
+                                      style: TextStyle(
+                                        fontFamily: 'MyriadPro-Regular',
+                                        fontSize: 20,
+                                        color: const Color(0xff000000),
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                ),
+
+
+                              ],
+
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 3,
+                          child: Row(
+                            children: <Widget>[
+                              Expanded(
+                                flex: 3,
+                                child: Container(
+                                  padding: EdgeInsets.all(10),
+                                  child: Divider(
+                                    color: Colors.white,
+                                    height: 2,
+                                    thickness: 3,
+
+
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                flex: 1,
+                                child: Container(
+                                  width: 10,
+                                  child: Text(
+                                    'OR',
+                                    style: TextStyle(
+                                      fontFamily: 'MyriadPro-Regular',
+                                      fontSize: 20,
+                                      color: const Color(0xffffffff),
+
+
+                                    ),
+                                    textAlign: TextAlign.center,
+
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                flex: 3,
+                                child: Container(
+                                  padding: EdgeInsets.all(10),
+                                  child: Divider(
+                                    color: Colors.white,
+                                    height: 2,
+                                    thickness: 3,
+
+                                  ),
+                                ),
+                              ),
+
+                            ],
+                          ),
+                        ),
+                        //text box for email
+                        Expanded(
+                          flex: 3,
+                          child: Container(
+                            margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(2),
+                              color: Colors.white12,
+                            ),
+                            child: Center(
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 10),
+                                child: TextField(
+                                  keyboardType: TextInputType.emailAddress,
+
+
+                                  decoration: InputDecoration(
+                                    focusedErrorBorder: InputBorder.none,
+                                    focusedBorder: InputBorder.none,
+                                    enabledBorder: InputBorder.none,
+                                    errorBorder: InputBorder.none,
+                                    disabledBorder: InputBorder.none,
+                                    hintText: 'Email',
+
+
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: Container(
+                            margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
+
+                            child: Divider(
+                              color: Colors.white,
+                              height: 2,
+                              thickness: 3,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 4,
+                          child: Container(
+                            margin: EdgeInsets.all(9),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(25),
+                              color: Colors.white,
+
+                            ),
+                            child: Center(
+                              child: FlatButton(
+                                onPressed: (){
+                                  navigateToPassword(context);
+                                },
+                                child: Text(
+                                  "Continue with Email"
+                                  ,style: TextStyle(
+                                  fontFamily: 'MyriadPro-Regular',
+                                  fontSize: 20,
+                                  color: const Color(0xff000000),
+                                ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            ),
+
+                          ),
+                        ),
+
+                      ],
+                    ),
+                  ),
+
+                ),
+              ),
+              Expanded(
+                flex: 1,
+                child: Container(
+
+                ),
+              ),
+            ],
           ),
         ),
       ),
     );
   }
 }
+
+
+
+
+
