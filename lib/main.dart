@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:phpadmingetdata/googleoremail.dart';
-import 'package:phpadmingetdata/login.dart';
+import 'package:phpadmingetdata/password.dart';
 import 'package:phpadmingetdata/loginorsignup.dart';
 import 'dart:convert';
 
