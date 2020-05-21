@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:phpadmingetdata/googleoremail.dart';
 import 'package:phpadmingetdata/login.dart';
 import 'package:phpadmingetdata/password.dart';
 import 'dart:ui' as ui;
@@ -9,8 +10,11 @@ class Loginorsignup extends StatelessWidget {
   Loginorsignup({
     Key key,
   }) : super(key: key);
-  Future navigateToSubPage(context) async {
+  Future navigateToLogin(context) async {
     Navigator.push(context, MaterialPageRoute(builder: (context) => Login()  ));
+  }
+  Future navigateToGoogleorEmail(context) async {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => Googleoremail()  ));
   }
   @override
   Widget build(BuildContext context) {
@@ -81,14 +85,14 @@ class Loginorsignup extends StatelessWidget {
                   ),
                   child: FlatButton(
                     onPressed: (){
-                      navigateToSubPage(context);
+                      navigateToGoogleorEmail(context);
                     },
                     child: Container(
 
                       child: Align(
                         alignment: Alignment.center,
                         child: Container(
-                          margin: EdgeInsets.fromLTRB(10, 17, 10, 17),
+
                           child: Text(
                             'Sign Up',
                             style: TextStyle(
@@ -109,7 +113,7 @@ class Loginorsignup extends StatelessWidget {
                 flex: 3,
                 child: FlatButton(
                   onPressed: (){
-                    navigateToSubPage(context);
+                    navigateToLogin(context);
 
                   },
                   child: Text(

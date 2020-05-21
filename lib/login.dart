@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:passwordfield/passwordfield.dart';
+import 'package:phpadmingetdata/googleoremail.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -9,6 +10,9 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  Future navigateToGoogleorEmail(context) async {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => Googleoremail()  ));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -168,15 +172,21 @@ class _LoginState extends State<Login> {
                                 ),
                                 Expanded(
                                   flex: 2,
-                                  child: Text(
-                                    'Sign Up',
-                                    style: TextStyle(
-                                      fontFamily: 'SegoeUI',
-                                      fontSize: 20,
-                                      color: const Color(0xff000000),
+                                  child: FlatButton(
 
+                                    onPressed: (){
+                                      navigateToGoogleorEmail(context);
+                                    },
+                                    child: Text(
+                                      'Sign Up',
+                                      style: TextStyle(
+                                        fontFamily: 'SegoeUI',
+                                        fontSize: 20,
+                                        color: const Color(0xff000000),
+
+                                      ),
+                                      textAlign: TextAlign.center,
                                     ),
-                                    textAlign: TextAlign.center,
                                   ),
                                 ),
 
