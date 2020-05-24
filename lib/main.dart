@@ -17,7 +17,8 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Server',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.pink,
+        backgroundColor:const Color(0xff101010),
+        accentColor: const Color(0xff734F96),
       ),
       home: Loginorsignup(),
 

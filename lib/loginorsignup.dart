@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:phpadmingetdata/googleoremail.dart';
 import 'package:phpadmingetdata/login.dart';
-import 'package:phpadmingetdata/password.dart';
-import 'dart:ui' as ui;
-
-import 'package:phpadmingetdata/password.dart';
 
 class Loginorsignup extends StatelessWidget {
   Loginorsignup({
