@@ -48,7 +48,7 @@ class Invite extends StatelessWidget {
                     margin: EdgeInsets.all(15),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(25),
-                      color: Colors.deepPurpleAccent,
+                      color: Colors.white70,
 
                     ),
                     child: Center(
