@@ -88,38 +88,36 @@ class _PageCompleterState extends State<PageCompleter> {
               ),
             ),
             _currentPagevalue != _numPages - 1
-                ? Expanded(
-              child: Align(
-                alignment: FractionalOffset.bottomRight,
-                child: FlatButton(
-                  onPressed: () {
-                    _pageController.nextPage(
-                      duration: Duration(milliseconds: 500),
-                      curve: Curves.ease,
-                    );
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Text(
-                        'Next',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 22.0,
+                ? Align(
+                  alignment: FractionalOffset.bottomRight,
+                  child: FlatButton(
+                    onPressed: () {
+                      _pageController.nextPage(
+                        duration: Duration(milliseconds: 500),
+                        curve: Curves.ease,
+                      );
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Text(
+                          'Next',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 22.0,
+                          ),
                         ),
-                      ),
-                      SizedBox(width: 10.0),
-                      Icon(
-                        Icons.arrow_forward,
-                        color: Colors.white,
-                        size: 30.0,
-                      ),
-                    ],
+                        SizedBox(width: 10.0),
+                        Icon(
+                          Icons.arrow_forward,
+                          color: Colors.white,
+                          size: 30.0,
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ),
-            )
+                )
                 : Text(''),
           ],
 
