@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:phpadmingetdata/LoginDatabase/LoginDetails.dart';
+import 'package:phpadmingetdata/SharedPreferencesMethods.dart';
 class Name extends StatefulWidget {
+
   @override
   _NameState createState() => _NameState();
+
 }
 
 class _NameState extends State<Name> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+  }
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -67,6 +78,10 @@ class _NameState extends State<Name> {
                         style: TextStyle(
                           color: Colors.white70,
                         ),
+                        onChanged: (name) async {
+                          await setFirstName(name);
+
+                        },
                         decoration: InputDecoration(
 
                           enabledBorder: UnderlineInputBorder(
@@ -102,6 +117,9 @@ class _NameState extends State<Name> {
                   child: Padding(
                     padding: const EdgeInsets.only(right: 70),
                     child: TextField(
+                      onChanged: (name) async {
+                        await setLastName(name);
+                      },
                         cursorColor: Colors.white,
                         style: TextStyle(
                           color: Colors.white70,

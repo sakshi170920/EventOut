@@ -1,27 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:phpadmingetdata/AddImage.dart';
-import 'package:phpadmingetdata/Invite.dart';
-import 'package:phpadmingetdata/NameDetails.dart';
-import 'package:phpadmingetdata/password.dart';
+import 'package:phpadmingetdata/LoginDatabase/LoginDetails.dart';
+import 'package:phpadmingetdata/login_screens/AddImage.dart';
+import 'package:phpadmingetdata/login_screens/Invite.dart';
+import 'package:phpadmingetdata/login_screens/NameDetails.dart';
+import 'package:phpadmingetdata/login_screens/password.dart';
 
 
 
-class PageCompleter extends StatefulWidget {
+class ProfileCompleter extends StatefulWidget {
+  static String id =  'profilecompleter';
+@override
+  _ProfileCompleterState createState() => _ProfileCompleterState();
 
-
-  @override
-  _PageCompleterState createState() => _PageCompleterState();
 }
 
-class _PageCompleterState extends State<PageCompleter> {
+class _ProfileCompleterState extends State<ProfileCompleter> {
   PageController _pageController = PageController();
   var _currentPagevalue = 0;
   static const int _numPages = 4;
+
+
 
   @override
   void initState() {
     super.initState();
     _pageController = PageController(initialPage: 0);
+
   }
 
   @override
@@ -51,6 +55,8 @@ class _PageCompleterState extends State<PageCompleter> {
   }
   @override
   Widget build(BuildContext context) {
+
+
     return SafeArea(
       child: Scaffold(
         backgroundColor:const Color(0xff101010),
@@ -59,8 +65,8 @@ class _PageCompleterState extends State<PageCompleter> {
           children: <Widget>[
             PageView(
               controller: _pageController,
-              physics: ClampingScrollPhysics(),
-              onPageChanged: (int page){
+            physics: NeverScrollableScrollPhysics(),
+            onPageChanged: (int page){
                 setState(() {
                   _currentPagevalue = page;
                 });
@@ -76,6 +82,7 @@ class _PageCompleterState extends State<PageCompleter> {
 
             ),
             Container(
+              
               margin: EdgeInsets.only(bottom: 50),
               child: Align(
                 alignment: Alignment.bottomCenter,
@@ -90,30 +97,44 @@ class _PageCompleterState extends State<PageCompleter> {
             _currentPagevalue != _numPages - 1
                 ? Align(
                   alignment: FractionalOffset.bottomRight,
-                  child: FlatButton(
-                    onPressed: () {
-                      _pageController.nextPage(
-                        duration: Duration(milliseconds: 500),
-                        curve: Curves.ease,
-                      );
-                    },
+                  child: Container(
+                    margin: EdgeInsets.all(20),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
                       children: <Widget>[
-                        Text(
-                          'Next',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 22.0,
+
+                        GestureDetector(
+                          onTap: (){
+                            _pageController.previousPage(
+                              duration: Duration(milliseconds: 500),
+                              curve: Curves.ease,
+                            );
+                          },
+                          child: Text(
+                            'Prev',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 22.0,
+                            ),
                           ),
                         ),
-                        SizedBox(width: 10.0),
-                        Icon(
-                          Icons.arrow_forward,
-                          color: Colors.white,
-                          size: 30.0,
+                        GestureDetector(
+                          onTap: () {
+                            _pageController.nextPage(
+                              duration: Duration(milliseconds: 500),
+                              curve: Curves.ease,
+                            );
+                          },
+                          child: Text(
+                            'Next',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 22.0,
+                            ),
+                          ),
                         ),
+
                       ],
                     ),
                   ),
