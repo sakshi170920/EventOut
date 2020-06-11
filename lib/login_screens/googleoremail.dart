@@ -1,14 +1,31 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:phpadmingetdata/ProfileCompleter.dart';
-import 'package:phpadmingetdata/password.dart';
+import 'package:phpadmingetdata/LoginDatabase/LoginDetails.dart';
+import 'package:phpadmingetdata/NavigationMethods.dart';
+import 'package:phpadmingetdata/SharedPreferencesMethods.dart';
 
 
-class Googleoremail extends StatelessWidget {
-  Future navigateToPassword(context) async {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => PageCompleter() ));
+class Googleoremail extends StatefulWidget {
+  static String id = 'googleoremail'  ;
+
+
+
+  @override
+  _GoogleoremailState createState() => _GoogleoremailState();
+}
+
+class _GoogleoremailState extends State<Googleoremail> {
+
+  String mEmail;
+
+  @override
+  void initState()  {
+    // TODO: implement initState
+    super.initState();
+
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,9 +87,7 @@ class Googleoremail extends StatelessWidget {
                               Align(
                                 alignment: Alignment.centerRight,
                                 child: FlatButton(
-                                  onPressed: (){
 
-                                  },
                                   child: Text(
                                     'Login with Google',
                                     style: TextStyle(
@@ -156,7 +171,9 @@ class Googleoremail extends StatelessWidget {
                               padding: const EdgeInsets.only(left: 10),
                               child: TextField(
                                 keyboardType: TextInputType.emailAddress,
-
+                                onChanged: (email) async {
+                                  mEmail = email;
+                                },
 
                                 decoration: InputDecoration(
                                   focusedErrorBorder: InputBorder.none,
@@ -195,10 +212,16 @@ class Googleoremail extends StatelessWidget {
 
                           ),
                           child: Center(
-                            child: FlatButton(
-                              onPressed: (){
-                                navigateToPassword(context);
+                            child: GestureDetector(
+                              onTap: () async {
+                                if(await LoginDetails.isValidRegisterEmail(mEmail)) {
+                                  await setEmail(mEmail);
+                                  navigateToProfileCompleter(context);
+                                }
+                                else
+                                  print('Invalid user');
                               },
+
                               child: Text(
                                 "Continue with Email"
                                 ,style: TextStyle(
@@ -232,6 +255,7 @@ class Googleoremail extends StatelessWidget {
     );
   }
 }
+
 
 
 

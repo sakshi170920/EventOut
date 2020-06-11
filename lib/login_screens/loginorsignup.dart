@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:phpadmingetdata/googleoremail.dart';
-import 'package:phpadmingetdata/login.dart';
+import 'package:phpadmingetdata/NavigationMethods.dart';
+
 
 class Loginorsignup extends StatelessWidget {
+
+  static String id = 'loginorsignup';
   Loginorsignup({
     Key key,
   }) : super(key: key);
-  Future navigateToLogin(context) async {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => Login()  ));
-  }
-  Future navigateToGoogleorEmail(context) async {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => Googleoremail()  ));
-  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

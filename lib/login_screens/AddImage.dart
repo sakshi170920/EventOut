@@ -1,13 +1,39 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:phpadmingetdata/LoginDatabase/LoginDetails.dart';
+
 class AddImage extends StatefulWidget {
+
   @override
   _AddImageState createState() => _AddImageState();
+
 }
 
 class _AddImageState extends State<AddImage> {
+
+  Future<File> file;
+  String status = '';
+  String base64Image;
+  File tmpFile;
+  String errMessage = 'Error Uploading Image';
+  @override
+  void initState() {
+    // TODO: implement initState
+
+
+    super.initState();
+  }
+
+//  chooseImage() {
+//    setState(() {
+//      file = ImagePicker.pickImage(source: ImageSource.gallery);
+//    });
+//  }
   @override
   Widget build(BuildContext context) {
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: const Color(0xff101010),
@@ -56,14 +82,17 @@ class _AddImageState extends State<AddImage> {
                 flex: 5,
                 child: Container(
                   margin: EdgeInsets.fromLTRB(20, 20, 20, 0),
-                  child: CircleAvatar(
-                    backgroundColor: Colors.white10,
-                    radius: 90,
-                    child: Icon(
-                      Icons.camera_alt,
-                      size: 50,
-                      color: Colors.white38,
+                  child: GestureDetector(
 
+                    child: CircleAvatar(
+                      backgroundColor: Colors.white10,
+                      radius: 90,
+                      child: Icon(
+                        Icons.camera_alt,
+                        size: 50,
+                        color: Colors.white38,
+
+                      ),
                     ),
                   ),
                 ),

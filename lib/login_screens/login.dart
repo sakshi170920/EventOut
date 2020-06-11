@@ -1,18 +1,26 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:passwordfield/passwordfield.dart';
-import 'package:phpadmingetdata/googleoremail.dart';
+import 'package:phpadmingetdata/NavigationMethods.dart';
+
 
 class Login extends StatefulWidget {
+  static String id = 'login' ;
+
   @override
   _LoginState createState() => _LoginState();
 }
 
 class _LoginState extends State<Login> {
-  Future navigateToGoogleorEmail(context) async {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => Googleoremail()  ));
+  bool invisible;
+  @override
+  void initState() {
+    // TODO: implement initState
+    invisible = true;
+
+    super.initState();
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -117,19 +125,54 @@ class _LoginState extends State<Login> {
                                     width: 1.0, color: Colors.black87),
                               ),
                               child: Center(
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(left: 20.0),
-                                    child: PasswordField(
-                                      hintText: 'Password',
+                                  child: Container(
+                                    padding: EdgeInsets.only(left: 15),
 
-                                      border: InputBorder.none,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(25),
+                                      color: Colors.white,
+                                      border: Border.all(
+                                          width: 1.0, color: Colors.black87),
+                                    ),
+                                    child: Center(
+                                      child: TextField(
+                                        obscureText: invisible,
+                                        onChanged: (password){
 
 
-                                      suffixIcon: Icon(
-                                        Icons.remove_red_eye,
-                                        color: Colors.black87,
+                                        },
+
+
+                                        decoration: InputDecoration(
+                                          focusedErrorBorder: InputBorder.none,
+                                          focusedBorder: InputBorder.none,
+                                          enabledBorder: InputBorder.none,
+                                          errorBorder: InputBorder.none,
+                                          disabledBorder: InputBorder.none,
+                                          hintText: 'password',
+
+                                          suffixIcon: GestureDetector(
+                                            onTapDown: (details){
+                                              setState(() {
+                                                invisible = false;
+
+                                              });
+                                            },
+                                            onTapUp: (details){
+                                              setState(() {
+                                                invisible = true;
+                                                print('tap up');
+
+                                              });
+                                            },
+                                            child: Icon(
+                                              Icons.remove_red_eye,size: 25,
+                                              color: Colors.black87,
+
+                                            ),
+                                          ),
+                                        ),
                                       ),
-
                                     ),
                                   )
                               ),

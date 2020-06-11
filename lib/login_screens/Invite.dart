@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:phpadmingetdata/SharedPreferencesMethods.dart';
 class Invite extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: const Color(0xff101010),
@@ -78,7 +81,10 @@ class Invite extends StatelessWidget {
 
                     child: Center(
                       child: FlatButton(
-                        onPressed: (){
+                        onPressed: ()async {
+                          print(await getEmail());
+                          print(await getFirstName());
+                          print(await getPassword());
 
                         },
                         child: Text(
