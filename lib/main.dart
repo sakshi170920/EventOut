@@ -1,26 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:phpadmingetdata/googleoremail.dart';
-import 'package:phpadmingetdata/password.dart';
-import 'package:phpadmingetdata/loginorsignup.dart';
-import 'dart:convert';
+import 'package:phpadmingetdata/login_screens/googleoremail.dart';
+import 'package:phpadmingetdata/login_screens/login.dart';
+import 'package:phpadmingetdata/login_screens/loginorsignup.dart';
+import 'package:phpadmingetdata/login_screens/ProfileCompleter.dart';
 
-import 'package:phpadmingetdata/password.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+
+
+
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Server',
+      routes: {
+        Loginorsignup.id : (context) => Loginorsignup(),
+        Googleoremail.id: (context) => Googleoremail(),
+        Login.id : (context) => Login(),
+        ProfileCompleter.id : (context) => ProfileCompleter(),
+      },
+      initialRoute: Loginorsignup.id,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         backgroundColor:const Color(0xff101010),
         accentColor: const Color(0xff734F96),
       ),
-      home: Loginorsignup(),
+
 
     );
   }
@@ -47,17 +57,11 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  Future getData() async{
-    var url = 'https://eventzy123.000webhostapp.com/get.php';
-    http.Response response = await http.get(url);
-    var data = jsonDecode(response.body);
-    //var data=json.decode(json.encode(response.body));
-    print(data.toString());
-  }
+
 
 
   @override
   void initState() {
-    getData();
+
   }
 }
