@@ -1,19 +1,48 @@
 
+
+import 'package:phpadmingetdata/SharedPreferencesMethods.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:passwordfield/passwordfield.dart';
+
+import 'package:phpadmingetdata/LoginDatabase/LoginDetails.dart';
 
 
 class Password extends StatefulWidget {
+
+
+
   @override
   _PasswordState createState() => _PasswordState();
+  Password();
 }
 
 class _PasswordState extends State<Password> {
 
 
+  String firstPassword;
+  String confirmPassword;
+  bool invisible1;
+  bool invisible2;
+
+
+
+
+
+@override
+  void initState() {
+
+    super.initState();
+    invisible1 = true;
+    invisible2 = true;
+
+
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: const Color(0xff101010),
@@ -92,19 +121,50 @@ class _PasswordState extends State<Password> {
                                   width: 1.0, color: Colors.black87),
                             ),
                             child: Center(
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 20.0),
-                                  child: PasswordField(
-                                    hintText: 'Password',
+                                child: Container(
+                                  padding: EdgeInsets.only(left: 15),
 
-                                    border: InputBorder.none,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(25),
+                                    color: Colors.white,
+                                    border: Border.all(
+                                        width: 1.0, color: Colors.black87),
+                                  ),
+                                  child: Center(
+                                    child: TextField(
+                                      obscureText: invisible1,
+                                      onChanged: (password){
+                                        firstPassword = password;
+                                      },
 
 
-                                    suffixIcon: Icon(
-                                      Icons.remove_red_eye,
-                                      color: Colors.black87,
+                                      decoration: InputDecoration(
+                                        focusedErrorBorder: InputBorder.none,
+                                        focusedBorder: InputBorder.none,
+                                        enabledBorder: InputBorder.none,
+                                        errorBorder: InputBorder.none,
+                                        disabledBorder: InputBorder.none,
+                                        hintText: 'password',
+
+                                        suffixIcon: GestureDetector(
+                                          onTapDown: (details){
+                                            setState(() {
+                                              invisible1 = false;
+                                            });
+                                          },
+                                          onTapUp: (details){
+                                            setState(() {
+                                              invisible1 = true;
+                                            });
+                                          },
+                                          child: Icon(
+                                            Icons.remove_red_eye,size: 25,
+                                            color: Colors.black87,
+
+                                          ),
+                                        ),
+                                      ),
                                     ),
-
                                   ),
                                 )
                             ),
@@ -125,20 +185,45 @@ class _PasswordState extends State<Password> {
                             ),
                             child: Center(
                                 child: Padding(
-                                  padding: const EdgeInsets.only(left: 20.0),
-                                  child: PasswordField(
-                                    hintText: 'Confirm your Password',
+                                  padding: const EdgeInsets.only(left : 15.0),
+                                  child: TextField(
+                                    obscureText: invisible2,
+                                    onChanged: (password) async {
+                                      confirmPassword = password;
+                                      if(firstPassword == confirmPassword)
+                                        await setPassword(firstPassword);
 
-                                    border: InputBorder.none,
+                                    },
 
 
-                                    suffixIcon: Icon(
-                                      Icons.remove_red_eye,
-                                      color: Colors.black87,
+                                    decoration: InputDecoration(
+                                      focusedErrorBorder: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      enabledBorder: InputBorder.none,
+                                      errorBorder: InputBorder.none,
+                                      disabledBorder: InputBorder.none,
+                                      hintText: 'password',
+
+                                      suffixIcon: GestureDetector(
+                                        onTapDown: (details){
+                                          setState(() {
+                                            invisible2 = false;
+                                          });
+                                        },
+                                        onTapUp: (details){
+                                          setState(() {
+                                            invisible2 = true;
+                                          });
+                                        },
+                                        child: Icon(
+                                          Icons.remove_red_eye,size: 25,
+                                          color: Colors.black87,
+
+                                        ),
+                                      ),
                                     ),
-
                                   ),
-                                )
+                                ),
                             ),
                           ),
                         ),
