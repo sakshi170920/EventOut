@@ -1,10 +1,10 @@
 
 
-import 'package:phpadmingetdata/SharedPreferencesMethods.dart';
+import 'package:EventOut/SharedPreferencesMethods.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'package:phpadmingetdata/LoginDatabase/LoginDetails.dart';
+import 'package:EventOut/LoginDatabase/LoginDetails.dart';
 
 
 class Password extends StatefulWidget {

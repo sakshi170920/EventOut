@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'main.dart';
-import 'package:phpadmingetdata/login_screens/ProfileCompleter.dart';
-import 'package:phpadmingetdata/login_screens/googleoremail.dart';
-import 'package:phpadmingetdata/login_screens/login.dart';
-import 'package:phpadmingetdata/LoginDatabase/LoginDetails.dart';
+import 'package:EventOut/login_screens/ProfileCompleter.dart';
+import 'package:EventOut/login_screens/googleoremail.dart';
+import 'package:EventOut/login_screens/login.dart';
+import 'package:EventOut/LoginDatabase/LoginDetails.dart';
 
 
 Future navigateToProfileCompleter(context ) async {

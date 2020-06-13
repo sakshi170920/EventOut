@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:phpadmingetdata/LoginDatabase/LoginDetails.dart';
 
 class AddImage extends StatefulWidget {
 

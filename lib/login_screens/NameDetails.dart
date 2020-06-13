@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:phpadmingetdata/LoginDatabase/LoginDetails.dart';
-import 'package:phpadmingetdata/SharedPreferencesMethods.dart';
+import 'package:EventOut/LoginDatabase/LoginDetails.dart';
+import 'package:EventOut/SharedPreferencesMethods.dart';
 class Name extends StatefulWidget {
 
   @override

@@ -1,7 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:phpadmingetdata/NavigationMethods.dart';
+import 'package:EventOut/NavigationMethods.dart';
 
 
 class Login extends StatefulWidget {

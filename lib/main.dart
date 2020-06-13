@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:phpadmingetdata/login_screens/googleoremail.dart';
-import 'package:phpadmingetdata/login_screens/login.dart';
-import 'package:phpadmingetdata/login_screens/loginorsignup.dart';
-import 'package:phpadmingetdata/login_screens/ProfileCompleter.dart';
+import 'package:EventOut/login_screens/googleoremail.dart';
+import 'package:EventOut/login_screens/login.dart';
+import 'package:EventOut/login_screens/loginorsignup.dart';
+import 'package:EventOut/login_screens/ProfileCompleter.dart';
 
 
 void main() => runApp(MyApp());
@@ -19,12 +19,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Server',
       routes: {
-        Loginorsignup.id : (context) => Loginorsignup(),
+        LoginSignUp.id : (context) => LoginSignUp(),
         Googleoremail.id: (context) => Googleoremail(),
         Login.id : (context) => Login(),
         ProfileCompleter.id : (context) => ProfileCompleter(),
       },
-      initialRoute: Loginorsignup.id,
+      initialRoute: LoginSignUp.id,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         backgroundColor:const Color(0xff101010),

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:phpadmingetdata/SharedPreferencesMethods.dart';
+import 'package:EventOut/SharedPreferencesMethods.dart';
 class Invite extends StatelessWidget {
 
   @override

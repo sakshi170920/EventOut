@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:phpadmingetdata/LoginDatabase/LoginDetails.dart';
-import 'package:phpadmingetdata/login_screens/AddImage.dart';
-import 'package:phpadmingetdata/login_screens/Invite.dart';
-import 'package:phpadmingetdata/login_screens/NameDetails.dart';
-import 'package:phpadmingetdata/login_screens/password.dart';
+import 'package:EventOut/LoginDatabase/LoginDetails.dart';
+import 'package:EventOut/login_screens/AddImage.dart';
+import 'package:EventOut/login_screens/Invite.dart';
+import 'package:EventOut/login_screens/NameDetails.dart';
+import 'package:EventOut/login_screens/password.dart';
 
 
 

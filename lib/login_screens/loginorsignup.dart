@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:phpadmingetdata/NavigationMethods.dart';
+import 'package:EventOut/NavigationMethods.dart';
 
 
-class Loginorsignup extends StatelessWidget {
+class LoginSignUp extends StatelessWidget {
 
   static String id = 'loginorsignup';
-  Loginorsignup({
+  LoginSignUp({
     Key key,
   }) : super(key: key);
 
