@@ -13,7 +13,6 @@ Future navigateToProfileCompleter(context ) async {
 Future navigateToGoogleorEmail(context) async {
   Navigator.pushNamed(context, Googleoremail.id);
 }
-
 Future navigateToLogin(context) async {
   Navigator.pushNamed(context, Login.id);
 }

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "433298017724",
+    "firebase_url": "https://eventout-95548.firebaseio.com",
+    "project_id": "eventout-95548",
+    "storage_bucket": "eventout-95548.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:433298017724:android:cd7d0d6ec679692e2b6fb9",
+        "android_client_info": {
+          "package_name": "com.company.eventOut"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "433298017724-b9kb10bgdcgn5bcv2pss92csn61evl7g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFv7fLfGcyowVzTuFkM7PRiwqQ2hNVTXY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "433298017724-b9kb10bgdcgn5bcv2pss92csn61evl7g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

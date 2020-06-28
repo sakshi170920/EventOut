@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:EventOut/LoginDatabase/LoginDetails.dart';
+import 'package:EventOut/NavigationMethods.dart';
 import 'package:EventOut/login_screens/AddImage.dart';
 import 'package:EventOut/login_screens/Invite.dart';
 import 'package:EventOut/login_screens/NameDetails.dart';
@@ -151,8 +152,10 @@ class _ProfileCompleterState extends State<ProfileCompleter> {
           width: double.infinity,
           color: const Color(0xff734F96),
           child: GestureDetector(
-            onTap: () => print('Get started'),
-            child: Center(
+            onTap: (){
+              navigateToTest(context);
+            },
+              child: Center(
               child: Padding(
                 padding: EdgeInsets.only(bottom: 30.0),
                 child: Text(

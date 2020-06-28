@@ -4,12 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:EventOut/LoginDatabase/LoginDetails.dart';
 import 'package:EventOut/NavigationMethods.dart';
 import 'package:EventOut/SharedPreferencesMethods.dart';
+import 'package:provider/provider.dart';
 
 
 class Googleoremail extends StatefulWidget {
   static String id = 'googleoremail'  ;
-
-
 
   @override
   _GoogleoremailState createState() => _GoogleoremailState();

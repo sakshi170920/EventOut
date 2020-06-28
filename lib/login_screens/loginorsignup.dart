@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:EventOut/NavigationMethods.dart';
-
+import 'package:EventOut/LoginDatabase/LoginDetails.dart';
+import 'package:provider/provider.dart';
 
 class LoginSignUp extends StatelessWidget {
-
+  LoginDetails user = LoginDetails();
   static String id = 'loginorsignup';
+
   LoginSignUp({
     Key key,
   }) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +32,7 @@ class LoginSignUp extends StatelessWidget {
                   margin: EdgeInsets.only(right: 10.0),
                   child: Align(
                     alignment: Alignment.topRight,
-                    child: Text(
-
-                      'Stay organized with\nprojects and teams',
+                    child: Text('EventOut',
                       style: TextStyle(
                         fontFamily: 'Helvetica',
                         fontSize: 20.889999389648438,
@@ -136,4 +137,9 @@ class LoginSignUp extends StatelessWidget {
     );
 
   }
+
+
+}
+class Data extends ChangeNotifier{
+  String data = '123';
 }
