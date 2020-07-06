@@ -87,7 +87,7 @@ class _LoginState extends State<Login> {
                                       throw Exception;
                                     else {
                                       setEmail(email);
-                                      navigateToChatRoom(context);
+                                      navigateToContactList(context);
                                     }
                                   }
                                   catch(e)
@@ -120,7 +120,6 @@ class _LoginState extends State<Login> {
                             Expanded(
                               flex: 4,
                               child: Container(
-                                margin: EdgeInsets.fromLTRB(10, 15, 10, 15),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(25),
                                   color: Colors.white,
@@ -160,7 +159,6 @@ class _LoginState extends State<Login> {
                               child:
                               Container(
 
-                                margin: EdgeInsets.fromLTRB(10, 15, 10, 15),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(25),
                                   color: Colors.white,

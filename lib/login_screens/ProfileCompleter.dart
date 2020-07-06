@@ -5,6 +5,7 @@ import 'package:EventOut/login_screens/AddImage.dart';
 import 'package:EventOut/login_screens/Invite.dart';
 import 'package:EventOut/login_screens/NameDetails.dart';
 import 'package:EventOut/login_screens/password.dart';
+import 'package:EventOut/SharedPreferencesMethods.dart';
 
 
 
@@ -88,9 +89,7 @@ class _ProfileCompleterState extends State<ProfileCompleter> {
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: Row(
-
                   mainAxisAlignment: MainAxisAlignment.center,
-
                   children: _buildPageIndicator(),
                 ),
               ),
@@ -152,8 +151,15 @@ class _ProfileCompleterState extends State<ProfileCompleter> {
           width: double.infinity,
           color: const Color(0xff734F96),
           child: GestureDetector(
-            onTap: (){
-              navigateToTest(context);
+            onTap: () async {
+              String email = await  getEmail();
+              String fname = await getFirstName();
+              String lname = await getLastName();
+              String image = await getImage();
+              String imageFileName = await getImageFileName();
+              String password = await getPassword();
+              bool register = await LoginDetails.registerUser(email, fname, lname, password, image, imageFileName);
+              register ? navigateToContactList(context) : print('invalid register');
             },
               child: Center(
               child: Padding(

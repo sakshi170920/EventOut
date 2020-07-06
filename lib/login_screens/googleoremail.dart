@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:EventOut/LoginDatabase/LoginDetails.dart';
 import 'package:EventOut/NavigationMethods.dart';
 import 'package:EventOut/SharedPreferencesMethods.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 
@@ -17,6 +18,8 @@ class Googleoremail extends StatefulWidget {
 class _GoogleoremailState extends State<Googleoremail> {
 
   String mEmail;
+  final _formKey = GlobalKey<FormState>();
+
 
   @override
   void initState()  {
@@ -168,21 +171,27 @@ class _GoogleoremailState extends State<Googleoremail> {
                           child: Center(
                             child: Padding(
                               padding: const EdgeInsets.only(left: 10),
-                              child: TextField(
-                                keyboardType: TextInputType.emailAddress,
-                                onChanged: (email) async {
-                                  mEmail = email;
-                                },
+                              child: Form(
+                                key: _formKey,
+                                child: TextFormField(
+                                  keyboardType: TextInputType.emailAddress,
+                                  validator: (val){
+                                    return RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+"
+                                    r"@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(val) ? null : "Enter correct email" ;
+                                  },
 
-                                decoration: InputDecoration(
-                                  focusedErrorBorder: InputBorder.none,
-                                  focusedBorder: InputBorder.none,
-                                  enabledBorder: InputBorder.none,
-                                  errorBorder: InputBorder.none,
-                                  disabledBorder: InputBorder.none,
-                                  hintText: 'Email',
+                                  onChanged: (email) async {
+                                    mEmail = email;
 
-
+                                  },
+                                  decoration: InputDecoration(
+                                    focusedErrorBorder: InputBorder.none,
+                                    focusedBorder: InputBorder.none,
+                                    enabledBorder: InputBorder.none,
+                                    errorBorder: InputBorder.none,
+                                    disabledBorder: InputBorder.none,
+                                    hintText: 'Email',
+                                  ),
                                 ),
                               ),
                             ),
@@ -213,12 +222,19 @@ class _GoogleoremailState extends State<Googleoremail> {
                           child: Center(
                             child: GestureDetector(
                               onTap: () async {
-                                if(await LoginDetails.isValidRegisterEmail(mEmail)) {
+
+                                if( _formKey.currentState.validate() &&
+                                    await LoginDetails.isValidRegisterEmail(mEmail) ) {
+                                  print("valid email");
                                   await setEmail(mEmail);
                                   navigateToProfileCompleter(context);
                                 }
                                 else
-                                  print('Invalid user');
+                                  {
+                                    print('Invalid user');
+                                  }
+
+
                               },
 
                               child: Text(

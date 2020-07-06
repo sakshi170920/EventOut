@@ -5,9 +5,27 @@ const String UserLastName = 'UserLastName';
 const String UserPassword = 'UserPassword';
 const String UserContact = 'UserContact';
 const String Logged = 'Logged';
+const String Image = 'Image';
+const String ImageFileName = 'ImageFileName';
 Future<String> getEmail() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   return prefs.getString(UserEmail) ?? null;
+}
+Future<void> setImage(String base64Image) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  return prefs.setString(Image, base64Image) ;
+}
+Future<String> getImage() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  return prefs.getString(Image) ?? null;
+}
+Future<void> setImageFileName(String fileName) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  return prefs.setString(ImageFileName,fileName) ;
+}
+Future<String> getImageFileName() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  return prefs.getString(ImageFileName) ?? null;
 }
 Future<String> getFirstName() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
