@@ -198,7 +198,7 @@ class MessageBubble extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Container(
-        margin: isMe ? EdgeInsets.only(left: 20) : EdgeInsets.only(right: 20),
+        margin:  EdgeInsets.symmetric(vertical: 10) ,
         child: Column(
           crossAxisAlignment:
           isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,

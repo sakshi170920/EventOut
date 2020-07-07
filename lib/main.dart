@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         ContactList.id : (context) => ContactList(),
         EventList.id : (context) => EventList(),
       },
-      initialRoute: Login.id,
+      initialRoute: LoginSignUp.id,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         backgroundColor:const Color(0xff101010),

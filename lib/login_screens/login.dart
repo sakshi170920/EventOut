@@ -120,6 +120,7 @@ class _LoginState extends State<Login> {
                             Expanded(
                               flex: 4,
                               child: Container(
+                                margin: EdgeInsets.all(4),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(25),
                                   color: Colors.white,
@@ -158,6 +159,7 @@ class _LoginState extends State<Login> {
                               flex: 4,
                               child:
                               Container(
+                                margin: EdgeInsets.all(4),
 
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(25),
@@ -167,49 +169,42 @@ class _LoginState extends State<Login> {
                                 ),
                                 child: Center(
                                     child: Container(
-                                      padding: EdgeInsets.only(left: 15),
 
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(25),
-                                        color: Colors.white,
-                                        border: Border.all(
-                                            width: 1.0, color: Colors.black87),
-                                      ),
-                                      child: Center(
-                                        child: TextField(
-                                          obscureText: invisible,
-                                          onChanged: (value){
-                                            password = value;
-                                          },
+                                      padding: const EdgeInsets.only(left: 20.0),
+
+                                      child: TextField(
+                                        obscureText: invisible,
+                                        onChanged: (value){
+                                          password = value;
+                                        },
 
 
-                                          decoration: InputDecoration(
-                                            focusedErrorBorder: InputBorder.none,
-                                            focusedBorder: InputBorder.none,
-                                            enabledBorder: InputBorder.none,
-                                            errorBorder: InputBorder.none,
-                                            disabledBorder: InputBorder.none,
-                                            hintText: 'password',
+                                        decoration: InputDecoration(
+                                          focusedErrorBorder: InputBorder.none,
+                                          focusedBorder: InputBorder.none,
+                                          enabledBorder: InputBorder.none,
+                                          errorBorder: InputBorder.none,
+                                          disabledBorder: InputBorder.none,
+                                          hintText: 'password',
 
-                                            suffixIcon: GestureDetector(
-                                              onTapDown: (details){
-                                                setState(() {
-                                                  invisible = false;
+                                          suffixIcon: GestureDetector(
+                                            onTapDown: (details){
+                                              setState(() {
+                                                invisible = false;
 
-                                                });
-                                              },
-                                              onTapUp: (details){
-                                                setState(() {
-                                                  invisible = true;
-                                                  print('tap up');
+                                              });
+                                            },
+                                            onTapUp: (details){
+                                              setState(() {
+                                                invisible = true;
+                                                print('tap up');
 
-                                                });
-                                              },
-                                              child: Icon(
-                                                Icons.remove_red_eye,size: 25,
-                                                color: Colors.black87,
+                                              });
+                                            },
+                                            child: Icon(
+                                              Icons.remove_red_eye,size: 25,
+                                              color: Colors.black87,
 
-                                              ),
                                             ),
                                           ),
                                         ),

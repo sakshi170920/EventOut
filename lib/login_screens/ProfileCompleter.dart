@@ -6,6 +6,7 @@ import 'package:EventOut/login_screens/Invite.dart';
 import 'package:EventOut/login_screens/NameDetails.dart';
 import 'package:EventOut/login_screens/password.dart';
 import 'package:EventOut/SharedPreferencesMethods.dart';
+import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 
 
@@ -17,6 +18,7 @@ class ProfileCompleter extends StatefulWidget {
 }
 
 class _ProfileCompleterState extends State<ProfileCompleter> {
+  bool spinner = false;
   PageController _pageController = PageController();
   var _currentPagevalue = 0;
   static const int _numPages = 4;
@@ -146,36 +148,55 @@ class _ProfileCompleterState extends State<ProfileCompleter> {
 
         ),
         bottomSheet: _currentPagevalue == _numPages - 1
-            ? Container(
+            ? ModalProgressHUD(
+          inAsyncCall: spinner,
+
+
+              child: Container(
           height: 100.0,
           width: double.infinity,
           color: const Color(0xff734F96),
           child: GestureDetector(
-            onTap: () async {
-              String email = await  getEmail();
-              String fname = await getFirstName();
-              String lname = await getLastName();
-              String image = await getImage();
-              String imageFileName = await getImageFileName();
-              String password = await getPassword();
-              bool register = await LoginDetails.registerUser(email, fname, lname, password, image, imageFileName);
-              register ? navigateToContactList(context) : print('invalid register');
-            },
-              child: Center(
-              child: Padding(
-                padding: EdgeInsets.only(bottom: 30.0),
-                child: Text(
-                  'Get started',
-                  style: TextStyle(
-                    color: Colors.white70,
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,
+              onTap: () async {
+                setState(() {
+                  spinner = true;
+                });
+                String email = await  getEmail();
+                String fname = await getFirstName();
+                String lname = await getLastName();
+                String image = await getImage();
+                String imageFileName = await getImageFileName();
+                String password = await getPassword();
+                print(image);
+                bool register = await LoginDetails.registerUser(email, fname, lname, password,'','');
+                //bool register = await LoginDetails.insertUser(email, fname, lname, password);
+
+                if(register)
+                  {
+                    navigateToContactList(context) ;
+                  }
+                else
+                  print('invalid register');
+                setState(() {
+                  spinner = false;
+                });
+              },
+                child: Center(
+                child: Padding(
+                  padding: EdgeInsets.only(bottom: 30.0),
+                  child: Text(
+                    'Get started',
+                    style: TextStyle(
+                      color: Colors.white70,
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
-            ),
           ),
-        )
+        ),
+            )
             : Text(''),
 
       ),
