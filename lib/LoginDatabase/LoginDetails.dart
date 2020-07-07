@@ -5,7 +5,6 @@ import 'package:http/http.dart' as http;
 const String basic_url = 'https://eventzy123.000webhostapp.com' ;
 class LoginDetails extends ChangeNotifier {
 
-
   static Future<bool>  isValidRegisterEmail(String email) async {
     var url = '$basic_url/isValidRegisterEmail.php';
     http.Response response = await http.post(url , body : {'email' : email}  );
@@ -23,14 +22,29 @@ class LoginDetails extends ChangeNotifier {
       'email' : email , 'fname' : fname , 'lname' : lname ,
       'password': password, 'image':image , 'imageFileName' : imageFileName}
       );
-    var data = jsonDecode(response.body);
+    var data = response.body;
     print(data);
-    print('hello user reg');
+    print(response.statusCode);
     if(response.statusCode == 200)
       return true;
     else
       return false;
   }
+//  static Future<bool>  insertUser(String email , String fname , String lname , String password ) async {
+//    var url = '$basic_url/insert_user.php';
+//    http.Response response = await http.post(url , body : {
+//      'email' : email , 'fname' : fname , 'lname' : lname ,
+//      'password': password}
+//    );
+//    var data = response.body;
+//    print("insert user");
+//    print(data);
+//    print(response.statusCode);
+//    if(response.statusCode == 200)
+//      return true;
+//    else
+//      return false;
+//  }
 //  static Future<bool> uploadImage() async {
 //    http.Response response = await http.post(url , body: {
 //      "image": base64Image,
