@@ -1,6 +1,3 @@
-
-
-
 import 'package:EventOut/SharedPreferencesMethods.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -8,9 +5,8 @@ import 'package:EventOut/NavigationMethods.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:EventOut/LoginDatabase/LoginDetails.dart';
 
-
 class Login extends StatefulWidget {
-  static String id = 'login' ;
+  static String id = 'login';
 
   @override
   _LoginState createState() => _LoginState();
@@ -31,7 +27,6 @@ class _LoginState extends State<Login> {
     super.initState();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return ModalProgressHUD(
@@ -50,21 +45,17 @@ class _LoginState extends State<Login> {
               children: <Widget>[
                 Expanded(
                   flex: 1,
-                  child: Container(
-
-                  ),
+                  child: Container(),
                 ),
                 Expanded(
                   flex: 2,
                   child: Center(
                     child: Container(
-
                       margin: EdgeInsets.fromLTRB(30, 50, 30, 50),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12.0),
                         color: const Color(0x80ffffff),
                       ),
-
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Column(
@@ -81,17 +72,17 @@ class _LoginState extends State<Login> {
                                     spinner = true;
                                   });
                                   try {
-                                    validLogin  = await LoginDetails.isValidLoginEmail(email, password);
+                                    validLogin =
+                                        await LoginDetails.isValidLoginEmail(
+                                            email, password);
                                     print(validLogin);
-                                    if(validLogin == false )
+                                    if (validLogin == false)
                                       throw Exception;
                                     else {
                                       setEmail(email);
                                       navigateToContactList(context);
                                     }
-                                  }
-                                  catch(e)
-                                  {
+                                  } catch (e) {
                                     print(e);
                                     print('Invalid user');
                                     print(email);
@@ -132,10 +123,9 @@ class _LoginState extends State<Login> {
                                     padding: const EdgeInsets.only(left: 20),
                                     child: TextField(
                                       keyboardType: TextInputType.emailAddress,
-                                      onChanged: (value){
+                                      onChanged: (value) {
                                         email = value;
                                       },
-
                                       decoration: InputDecoration(
                                         focusedErrorBorder: InputBorder.none,
                                         focusedBorder: InputBorder.none,
@@ -144,9 +134,9 @@ class _LoginState extends State<Login> {
                                         disabledBorder: InputBorder.none,
                                         hintText: 'Email',
                                         suffixIcon: Icon(
-                                          Icons.email,size: 25,
+                                          Icons.email,
+                                          size: 25,
                                           color: Colors.black87,
-
                                         ),
                                       ),
                                     ),
@@ -154,13 +144,10 @@ class _LoginState extends State<Login> {
                                 ),
                               ),
                             ),
-
                             Expanded(
                               flex: 4,
-                              child:
-                              Container(
+                              child: Container(
                                 margin: EdgeInsets.all(4),
-
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(25),
                                   color: Colors.white,
@@ -169,48 +156,40 @@ class _LoginState extends State<Login> {
                                 ),
                                 child: Center(
                                     child: Container(
-
-                                      padding: const EdgeInsets.only(left: 20.0),
-
-                                      child: TextField(
-                                        obscureText: invisible,
-                                        onChanged: (value){
-                                          password = value;
+                                  padding: const EdgeInsets.only(left: 20.0),
+                                  child: TextField(
+                                    obscureText: invisible,
+                                    onChanged: (value) {
+                                      password = value;
+                                    },
+                                    decoration: InputDecoration(
+                                      focusedErrorBorder: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      enabledBorder: InputBorder.none,
+                                      errorBorder: InputBorder.none,
+                                      disabledBorder: InputBorder.none,
+                                      hintText: 'password',
+                                      suffixIcon: GestureDetector(
+                                        onTapDown: (details) {
+                                          setState(() {
+                                            invisible = false;
+                                          });
                                         },
-
-
-                                        decoration: InputDecoration(
-                                          focusedErrorBorder: InputBorder.none,
-                                          focusedBorder: InputBorder.none,
-                                          enabledBorder: InputBorder.none,
-                                          errorBorder: InputBorder.none,
-                                          disabledBorder: InputBorder.none,
-                                          hintText: 'password',
-
-                                          suffixIcon: GestureDetector(
-                                            onTapDown: (details){
-                                              setState(() {
-                                                invisible = false;
-
-                                              });
-                                            },
-                                            onTapUp: (details){
-                                              setState(() {
-                                                invisible = true;
-                                                print('tap up');
-
-                                              });
-                                            },
-                                            child: Icon(
-                                              Icons.remove_red_eye,size: 25,
-                                              color: Colors.black87,
-
-                                            ),
-                                          ),
+                                        onTapUp: (details) {
+                                          setState(() {
+                                            invisible = true;
+                                            print('tap up');
+                                          });
+                                        },
+                                        child: Icon(
+                                          Icons.remove_red_eye,
+                                          size: 25,
+                                          color: Colors.black87,
                                         ),
                                       ),
-                                    )
-                                ),
+                                    ),
+                                  ),
+                                )),
                               ),
                             ),
                             Expanded(
@@ -230,20 +209,18 @@ class _LoginState extends State<Login> {
                                 ),
                               ),
                             ),
-
                             Expanded(
                               flex: 3,
                               child: Row(
                                 children: <Widget>[
                                   Expanded(
-                                    flex:2,
+                                    flex: 2,
                                     child: Text(
                                       'Don\'t have an account? ',
                                       style: TextStyle(
                                         fontFamily: 'SegoeUI',
                                         fontSize: 14,
                                         color: const Color(0xff000000),
-
                                       ),
                                       textAlign: TextAlign.left,
                                     ),
@@ -251,8 +228,7 @@ class _LoginState extends State<Login> {
                                   Expanded(
                                     flex: 2,
                                     child: FlatButton(
-
-                                      onPressed: (){
+                                      onPressed: () {
                                         navigateToGoogleorEmail(context);
                                       },
                                       child: Text(
@@ -261,29 +237,23 @@ class _LoginState extends State<Login> {
                                           fontFamily: 'SegoeUI',
                                           fontSize: 20,
                                           color: const Color(0xff000000),
-
                                         ),
                                         textAlign: TextAlign.center,
                                       ),
                                     ),
                                   ),
-
-
                                 ],
                               ),
                             )
                           ],
                         ),
                       ),
-
                     ),
                   ),
                 ),
                 Expanded(
                   flex: 1,
-                  child: Container(
-
-                  ),
+                  child: Container(),
                 ),
               ],
             ),
@@ -293,7 +263,3 @@ class _LoginState extends State<Login> {
     );
   }
 }
-
-
-
-
