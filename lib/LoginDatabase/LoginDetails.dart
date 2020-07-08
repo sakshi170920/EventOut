@@ -6,7 +6,7 @@ const String basic_url = 'https://eventzy123.000webhostapp.com' ;
 class LoginDetails extends ChangeNotifier {
 
   static Future<bool>  isValidRegisterEmail(String email) async {
-    var url = '$basic_url/isValidRegisterEmail.php';
+    var url = '$basic_url/check_register_email.php';
     http.Response response = await http.post(url , body : {'email' : email}  );
     var data = jsonDecode(response.body);
     print(data);
