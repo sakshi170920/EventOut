@@ -3,7 +3,7 @@ import 'package:EventOut/login_screens/ProfileCompleter.dart';
 import 'package:EventOut/login_screens/googleoremail.dart';
 import 'package:EventOut/login_screens/login.dart';
 import 'package:EventOut/Chat/chatRoom.dart';
-import 'package:EventOut/Chat/test.dart';
+
 import 'package:EventOut/Chat/ContactList.dart';
 import 'package:EventOut/constants/constants.dart';
 import 'package:EventOut/SharedPreferencesMethods.dart';
@@ -27,9 +27,7 @@ Future navigateToLogin(context) async {
 Future navigateToChatRoom({context , String group , String subGroupId , ChatType type}) async {
   Navigator.pushNamed(context, ChatRoom.id , arguments: ChatRoomArguments(group, subGroupId ,type));
 }
-Future navigateToTest(context) async {
-  Navigator.pushNamed(context, Test.id);
-}
+
 Future navigateToEventList(context , String groupId) async {
   Navigator.pushNamed(context, EventList.id ,arguments: groupId );
 }

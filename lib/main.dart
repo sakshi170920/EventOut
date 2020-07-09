@@ -4,7 +4,7 @@ import 'package:EventOut/login_screens/googleoremail.dart';
 import 'package:EventOut/login_screens/login.dart';
 import 'package:EventOut/login_screens/loginorsignup.dart';
 import 'package:EventOut/login_screens/ProfileCompleter.dart';
-import 'package:EventOut/Chat/test.dart';
+
 import 'package:EventOut/Chat/ContactList.dart';
 import 'SharedPreferencesMethods.dart';
 
@@ -37,7 +37,6 @@ class MyApp extends StatelessWidget {
         Login.id : (context) => Login(),
         ProfileCompleter.id : (context) => ProfileCompleter(),
         ChatRoom.id : (context) => ChatRoom(),
-        Test.id : (context) => Test(),
         ContactList.id : (context) => ContactList(),
         EventList.id : (context) => EventList(),
         ClubList.id : (context) => ClubList(),
