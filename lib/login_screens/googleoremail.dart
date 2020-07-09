@@ -43,7 +43,7 @@ class _GoogleoremailState extends State<Googleoremail> {
               ),
             ),
             Expanded(
-              flex: 2,
+              flex: 3,
               child: Container(
 
                 margin: EdgeInsets.fromLTRB(30, 40, 30, 40),
@@ -259,7 +259,7 @@ class _GoogleoremailState extends State<Googleoremail> {
               ),
             ),
             Expanded(
-              flex: 1,
+              flex: 2,
               child: Container(
 
               ),

@@ -56,7 +56,7 @@ class _PasswordState extends State<Password> {
               ),
             ),
             Expanded(
-              flex: 2,
+              flex: 3,
               child: Center(
                 child: Container(
 
@@ -239,7 +239,7 @@ class _PasswordState extends State<Password> {
               ),
             ),
             Expanded(
-              flex: 1,
+              flex: 2,
               child: Container(
 
               ),

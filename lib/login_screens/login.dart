@@ -55,7 +55,7 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 Expanded(
-                  flex: 2,
+                  flex: 3,
                   child: Center(
                     child: Container(
 
@@ -87,6 +87,7 @@ class _LoginState extends State<Login> {
                                       throw Exception;
                                     else {
                                       setEmail(email);
+                                      await setLoginStatus(true);
                                       navigateToContactList(context);
                                     }
                                   }
@@ -214,25 +215,33 @@ class _LoginState extends State<Login> {
                               ),
                             ),
                             Expanded(
-                              flex: 2,
-                              child: Align(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  'Forgot password?',
-                                  style: TextStyle(
-                                    fontFamily: 'SegoeUI',
-                                    fontSize: 14,
-                                    fontStyle: FontStyle.italic,
-                                    color: const Color(0xff000000),
-                                    height: 1.2000000817435128,
+                              flex: 3,
+                              child: Container(
+
+                                margin: EdgeInsets.symmetric(horizontal: 80 , vertical: 10),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(40),
+                                  color: Colors.black87,
+                                  border: Border.all(
+                                      width: 1.0, color: Colors.black87),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    'Login',
+                                    style: TextStyle(
+                                      fontFamily: 'SegoeUI-Bold',
+                                      fontSize: 18,
+                                      color: Colors.white,
+
+                                    ),
+                                    textAlign: TextAlign.center,
                                   ),
-                                  textAlign: TextAlign.left,
                                 ),
                               ),
                             ),
 
                             Expanded(
-                              flex: 3,
+                              flex: 2,
                               child: Row(
                                 children: <Widget>[
                                   Expanded(
@@ -255,15 +264,18 @@ class _LoginState extends State<Login> {
                                       onPressed: (){
                                         navigateToGoogleorEmail(context);
                                       },
-                                      child: Text(
-                                        'Sign Up',
-                                        style: TextStyle(
-                                          fontFamily: 'SegoeUI',
-                                          fontSize: 20,
-                                          color: const Color(0xff000000),
+                                      child: Container(
+                                        margin: EdgeInsets.only(right: 20),
+                                        child: Text(
+                                          'Sign Up',
+                                          style: TextStyle(
+                                            fontFamily: 'SegoeUI',
+                                            fontSize: 16,
+                                            color: const Color(0xff000000),
 
+                                          ),
+                                          textAlign: TextAlign.center,
                                         ),
-                                        textAlign: TextAlign.center,
                                       ),
                                     ),
                                   ),
@@ -280,7 +292,7 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 Expanded(
-                  flex: 1,
+                  flex: 2,
                   child: Container(
 
                   ),

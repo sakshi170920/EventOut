@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:EventOut/NavigationMethods.dart';
 import 'package:EventOut/LoginDatabase/LoginDetails.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
+import 'package:EventOut/SharedPreferencesMethods.dart';
 
 class LoginSignUp extends StatelessWidget {
-  LoginDetails user = LoginDetails();
   static String id = 'loginorsignup';
 
   LoginSignUp({
@@ -12,8 +14,11 @@ class LoginSignUp extends StatelessWidget {
   }) : super(key: key);
 
 
+
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -25,6 +30,8 @@ class LoginSignUp extends StatelessWidget {
             ),
           ),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Expanded(
                 flex: 5,

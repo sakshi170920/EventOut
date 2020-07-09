@@ -9,11 +9,13 @@ class Name extends StatefulWidget {
 }
 
 class _NameState extends State<Name> {
+  bool isChecked;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    isChecked = false;
 
   }
   @override
@@ -141,27 +143,34 @@ class _NameState extends State<Name> {
 
               Expanded(
                 flex: 3,
-                child: Container(
-                  padding: EdgeInsets.all(50),
-
-                  child: Text("By clicking next you accept the Terms of Services and Privacy Policy",
-                    style: TextStyle(
-                      fontFamily: 'MyriadPro-Regular',
-                      fontSize: 12,
-                      color: Colors.white54,
-
-
-
+                child: Row(
+                  children: <Widget>[
+                    Checkbox(
+                      activeColor: Colors.white,
+                      onChanged: (value){
+                        isChecked = value;
+                      },
                     ),
-                    textAlign: TextAlign.center,
 
-                  ),
+                    Container(
+                      padding: EdgeInsets.all(50),
+
+                      child: Text("By clicking  accept the Terms of Services and Privacy Policy",
+                        style: TextStyle(
+                          fontFamily: 'MyriadPro-Regular',
+                          fontSize: 12,
+                          color: Colors.white54,
+                        ),
+                        textAlign: TextAlign.center,
+
+                      ),
+                    ),
+                  ],
                 ),
               ),
               Expanded(
                 flex: 1,
                 child: Container(
-
                 ),
               ),
             ],
