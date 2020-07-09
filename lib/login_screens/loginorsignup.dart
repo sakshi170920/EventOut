@@ -27,10 +27,11 @@ class LoginSignUp extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+
               Expanded(
-                flex: 5,
+                flex: 2,
                 child: Container(
-                  margin: EdgeInsets.only(right: 10.0),
+                  margin: EdgeInsets.all(10.0),
                   child: Align(
                     alignment: Alignment.topRight,
                     child: Text(
@@ -47,7 +48,7 @@ class LoginSignUp extends StatelessWidget {
                 ),
               ),
               Expanded(
-                flex: 3,
+                flex: 4,
                 child: Align(
                   alignment: Alignment.topLeft,
                   child: Container(
@@ -56,6 +57,7 @@ class LoginSignUp extends StatelessWidget {
                   ),
                 ),
               ),
+
               Expanded(
                 flex: 12,
                 child: Container(),

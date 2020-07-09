@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:EventOut/NavigationMethods.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:EventOut/LoginDatabase/LoginDetails.dart';
+import 'package:EventOut/constants/constants.dart';
 
 class Login extends StatefulWidget {
   static String id = 'login';
@@ -67,46 +68,17 @@ class _LoginState extends State<Login> {
                             ),
                             Expanded(
                               flex: 3,
-                              child: GestureDetector(
-                                onTap: () async {
-                                  setState(() {
-                                    spinner = true;
-                                  });
-                                  try {
-                                    validLogin =
-                                        await LoginDetails.isValidLoginEmail(
-                                            email, password);
-                                    print(validLogin);
-                                    if (validLogin == false)
-                                      throw Exception;
-                                    else {
-                                      setEmail(email);
-                                      await setLoginStatus(true);
-                                      navigateToContactList(context);
-                                    }
-                                  } catch (e) {
-                                    print(e);
-                                    print('Invalid user');
-                                    print(email);
-                                    print(password);
-                                    print(validLogin);
-                                  }
-                                  setState(() {
-                                    spinner = false;
-                                  });
-                                },
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(
-                                    'Login',
-                                    style: TextStyle(
-                                      fontFamily: 'SegoeUI-Bold',
-                                      fontSize: 25,
-                                      color: const Color(0xff05002a),
-                                      height: 1.2000000762939453,
-                                    ),
-                                    textAlign: TextAlign.left,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  'Login',
+                                  style: TextStyle(
+                                    fontFamily: 'SegoeUI-Bold',
+                                    fontSize: 25,
+                                    color: const Color(0xff05002a),
+                                    height: 1.2000000762939453,
                                   ),
+                                  textAlign: TextAlign.left,
                                 ),
                               ),
                             ),
@@ -206,14 +178,45 @@ class _LoginState extends State<Login> {
                                       width: 1.0, color: Colors.black87),
                                 ),
                                 child: Center(
-                                  child: Text(
-                                    'Login',
-                                    style: TextStyle(
-                                      fontFamily: 'SegoeUI-Bold',
-                                      fontSize: 18,
-                                      color: Colors.white,
+                                  child: GestureDetector(
+                                    onTap: () async {
+                                      setState(() {
+                                        spinner = true;
+                                      });
+                                      try {
+                                        validLogin =
+                                        await LoginDetails.isValidLoginEmail(
+                                            email, password);
+                                        print(validLogin);
+                                        if (validLogin == false)
+                                          throw Exception;
+                                        else {
+                                          setEmail(email);
+                                          await setLoginStatus(true);
+                                          navigateToContactList(context);
+                                        }
+                                      } catch (e) {
+                                        print('invalid user');
+                                        showDialog(context: context,
+                                        builder: (BuildContext context) => CustomDialog(
+                                          title: 'Login Failed',
+                                          description: "Your email and password don't match.Try Again!",
+                                          buttonText: 'Close',
+                                        ),);
+                                      }
+                                      setState(() {
+                                        spinner = false;
+                                      });
+                                    },
+                                    child: Text(
+                                      'Login',
+                                      style: TextStyle(
+                                        fontFamily: 'SegoeUI-Bold',
+                                        fontSize: 18,
+                                        color: Colors.white,
+                                      ),
+                                      textAlign: TextAlign.center,
                                     ),
-                                    textAlign: TextAlign.center,
                                   ),
                                 ),
                               ),
