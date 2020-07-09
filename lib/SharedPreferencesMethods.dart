@@ -70,5 +70,7 @@ Future<void> setLoginStatus(bool logged) async {
 
 Future<bool> getLoginStatus() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  return prefs.getBool(Logged) ;
+  return prefs.getBool(Logged)==null ? false :  prefs.getBool(Logged);
+
+
 }

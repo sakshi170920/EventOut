@@ -12,6 +12,9 @@ import 'package:EventOut/SharedPreferencesMethods.dart';
 Future navigateToProfileCompleter(context ) async {
   Navigator.pushNamed(context, ProfileCompleter.id );
 }
+Future navigateToClubList(context ) async {
+  Navigator.pushNamed(context, ClubList.id );
+}
 Future navigateToContactList(context ) async {
   Navigator.pushNamed(context, ContactList.id );
 }
