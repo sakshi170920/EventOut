@@ -1,4 +1,4 @@
-package com.example.phpadmingetdata;
+package com.example.EventOut;
 
 import io.flutter.embedding.android.FlutterActivity;
 

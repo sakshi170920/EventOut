@@ -1,13 +1,10 @@
-
-
-
+import 'package:EventOut/constants/constants.dart';
 import 'package:EventOut/SharedPreferencesMethods.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:EventOut/NavigationMethods.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:EventOut/LoginDatabase/LoginDetails.dart';
-
 
 class Login extends StatefulWidget {
   static String id = 'login' ;
@@ -93,6 +90,15 @@ class _LoginState extends State<Login> {
                                   }
                                   catch(e)
                                   {
+                                    showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) => CustomDialog(
+                                        title: "Login Failed",
+                                        description:
+                                        "Your email and password did not match . Try Again !",
+                                        buttonText: "Close",
+                                      ),
+                                    );
                                     print(e);
                                     print('Invalid user');
                                     print(email);
@@ -226,15 +232,17 @@ class _LoginState extends State<Login> {
                                       width: 1.0, color: Colors.black87),
                                 ),
                                 child: Center(
-                                  child: Text(
-                                    'Login',
-                                    style: TextStyle(
-                                      fontFamily: 'SegoeUI-Bold',
-                                      fontSize: 18,
-                                      color: Colors.white,
+                                  child: GestureDetector(
+                                    child: Text(
+                                      'Login',
+                                      style: TextStyle(
+                                        fontFamily: 'SegoeUI-Bold',
+                                        fontSize: 18,
+                                        color: Colors.white,
 
+                                      ),
+                                      textAlign: TextAlign.center,
                                     ),
-                                    textAlign: TextAlign.center,
                                   ),
                                 ),
                               ),

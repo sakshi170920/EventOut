@@ -4,7 +4,7 @@ import 'package:EventOut/LoginDatabase/LoginDetails.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
-import 'package:EventOut/SharedPreferencesMethods.dart';
+import 'package:EventOut/SharedPreferencesMethods.dart' as SharedPref;
 
 class LoginSignUp extends StatelessWidget {
   static String id = 'loginorsignup';
@@ -52,21 +52,11 @@ class LoginSignUp extends StatelessWidget {
                 ),
               ),
               Expanded(
-                flex: 3,
+                flex: 6,
                 child: Align(
                   alignment: Alignment.topLeft,
-                  child: Container(
-                    margin: EdgeInsets.only(left: 20),
-                    child: Text(
-                      'Eventzy',
-                      style: TextStyle(
-                        fontFamily: 'Helvetica',
-                        fontSize: 40,
-                        color: const Color(0xffffffff),
-                        height: 1.2,
-                      ),
-
-                    ),
+                  child: Image(
+                      image: AssetImage('assets/logo.png'),
                   ),
                 ),
               ),
