@@ -36,7 +36,6 @@ class _GoogleoremailState extends State<Googleoremail> {
       if (_formKey.currentState.validate() &&
           await LoginDetails.isValidRegisterEmail(mEmail)) {
         print("valid email");
-        _streamController.add("Verified");
         await setEmail(mEmail);
         navigateToProfileCompleter(context);
         _streamController.add("complete");
@@ -274,9 +273,6 @@ class _GoogleoremailState extends State<Googleoremail> {
                       ),
                     ]);
                   }
-                  if (snapshot.data == "Verified") {
-                    return Center(child: CircularProgressIndicator());
-                  }
                   if (snapshot.data == "invalid") {
                     return Center(
                       child: Text(""),
@@ -284,7 +280,7 @@ class _GoogleoremailState extends State<Googleoremail> {
                   } else if (snapshot.data == "complete") {
                     return Text("");
                   } else
-                    return Text("dhxfp");
+                    return Text("");
                 })
           ],
         ));
