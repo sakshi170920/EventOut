@@ -1,4 +1,5 @@
 import 'package:EventOut/Chat/chatRoom.dart';
+import 'package:EventOut/organisation/ListJuniors.dart';
 import 'package:flutter/material.dart';
 import 'package:EventOut/login_screens/googleoremail.dart';
 import 'package:EventOut/login_screens/login.dart';
@@ -12,14 +13,11 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   bool logged = await getLoginStatus();
 
-
   final MyApp myApp = MyApp(
     initialRoute: logged ? ContactList.id : LoginSignUp.id,
   );
   runApp(myApp);
-
 }
-
 
 class MyApp extends StatelessWidget {
   final String initialRoute;
@@ -32,25 +30,22 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Server',
       routes: {
-        LoginSignUp.id : (context) => LoginSignUp(),
+        LoginSignUp.id: (context) => LoginSignUp(),
         Googleoremail.id: (context) => Googleoremail(),
-        Login.id : (context) => Login(),
-        ProfileCompleter.id : (context) => ProfileCompleter(),
-        ChatRoom.id : (context) => ChatRoom(),
-        ContactList.id : (context) => ContactList(),
-        EventList.id : (context) => EventList(),
-        ClubList.id : (context) => ClubList(),
+        Login.id: (context) => Login(),
+        ProfileCompleter.id: (context) => ProfileCompleter(),
+        ChatRoom.id: (context) => ChatRoom(),
+        ContactList.id: (context) => ContactList(),
+        EventList.id: (context) => EventList(),
+        ClubList.id: (context) => ClubList(),
       },
       initialRoute: initialRoute,
+      //home: ListJunior(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        backgroundColor:const Color(0xff101010),
+        backgroundColor: const Color(0xff101010),
         accentColor: const Color(0xff734F96),
       ),
-
-
     );
   }
 }
-
-

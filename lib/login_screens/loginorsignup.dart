@@ -4,6 +4,7 @@ import 'package:EventOut/LoginDatabase/LoginDetails.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
+import 'package:EventOut/SharedPreferencesMethods.dart';
 
 class LoginSignUp extends StatelessWidget {
   static String id = 'loginorsignup';
@@ -15,23 +16,22 @@ class LoginSignUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff000000),
       body: SafeArea(
         child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
               image: const AssetImage('assets/bg1.gif'),
+              fit: BoxFit.cover,
             ),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-
               Expanded(
-                flex: 2,
+                flex: 5,
                 child: Container(
-                  margin: EdgeInsets.all(10.0),
+                  margin: EdgeInsets.only(right: 10.0),
                   child: Align(
                     alignment: Alignment.topRight,
                     child: Text(
@@ -39,7 +39,7 @@ class LoginSignUp extends StatelessWidget {
                       style: TextStyle(
                         fontFamily: 'Helvetica',
                         fontSize: 20.889999389648438,
-                        color: const Color(0xffe4a132),
+                        color: const Color(0xffff5f7a),
                         height: 1.8321566023664637,
                       ),
                       textAlign: TextAlign.right,
@@ -48,16 +48,23 @@ class LoginSignUp extends StatelessWidget {
                 ),
               ),
               Expanded(
-                flex: 4,
+                flex: 3,
                 child: Align(
                   alignment: Alignment.topLeft,
                   child: Container(
                     margin: EdgeInsets.only(left: 20),
-                    child: Image(image: AssetImage('assets/logo.png')),
+                    child: Text(
+                      'Eventzy',
+                      style: TextStyle(
+                        fontFamily: 'Helvetica',
+                        fontSize: 40,
+                        color: const Color(0xffffffff),
+                        height: 1.2,
+                      ),
+                    ),
                   ),
                 ),
               ),
-
               Expanded(
                 flex: 12,
                 child: Container(),
@@ -68,7 +75,7 @@ class LoginSignUp extends StatelessWidget {
                   margin: EdgeInsets.all(23),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(29.5),
-                    color: const Color(0xffe4a132),
+                    color: const Color(0xffd80858),
                   ),
                   child: FlatButton(
                     onPressed: () {
@@ -100,11 +107,11 @@ class LoginSignUp extends StatelessWidget {
                     navigateToLogin(context);
                   },
                   child: Text(
-                    'Log In',
+                    'Login In',
                     style: TextStyle(
                       fontFamily: 'Helvetica',
                       fontSize: 30,
-                      color: const Color(0xffffffff),
+                      color: const Color(0xff000000),
                       height: 1.2,
                     ),
                     textAlign: TextAlign.center,

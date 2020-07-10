@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:EventOut/LoginDatabase/LoginDetails.dart';
@@ -16,15 +18,34 @@ class Googleoremail extends StatefulWidget {
 class _GoogleoremailState extends State<Googleoremail> {
   String mEmail;
   final _formKey = GlobalKey<FormState>();
+  StreamController _streamController;
+  Stream _stream;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    _streamController = new StreamController();
+    _stream = _streamController.stream;
   }
 
   @override
   Widget build(BuildContext context) {
+    _next_page() async {
+      _streamController.add("checking");
+      if (_formKey.currentState.validate() &&
+          await LoginDetails.isValidRegisterEmail(mEmail)) {
+        print("valid email");
+        _streamController.add("Verified");
+        await setEmail(mEmail);
+        navigateToProfileCompleter(context);
+        _streamController.add("complete");
+      } else {
+        _streamController.add("invalid");
+        print('Invalid user');
+      }
+    }
+
     return Scaffold(
         resizeToAvoidBottomInset: false,
         backgroundColor: const Color(0xff101010),
@@ -59,7 +80,7 @@ class _GoogleoremailState extends State<Googleoremail> {
                           children: <Widget>[
                             SizedBox(
                               width: double.infinity,
-                              height: 1,
+                              height: 2,
                             ),
 
                             Expanded(
@@ -208,16 +229,8 @@ class _GoogleoremailState extends State<Googleoremail> {
                                 ),
                                 child: Center(
                                   child: GestureDetector(
-                                    onTap: () async {
-                                      if (_formKey.currentState.validate() &&
-                                          await LoginDetails
-                                              .isValidRegisterEmail(mEmail)) {
-                                        print("valid email");
-                                        await setEmail(mEmail);
-                                        navigateToProfileCompleter(context);
-                                      } else {
-                                        print('Invalid user');
-                                      }
+                                    onTap: () {
+                                      _next_page();
                                     },
                                     child: Text(
                                       "Continue with Email",
@@ -244,6 +257,35 @@ class _GoogleoremailState extends State<Googleoremail> {
                 ],
               ),
             ),
+            StreamBuilder(
+                stream: _stream,
+                builder: (BuildContext context, AsyncSnapshot snapshot) {
+                  if (snapshot.data == "checking") {
+                    return Stack(children: <Widget>[
+                      Center(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.black,
+                            image: DecorationImage(
+                              image: const AssetImage('assets/loading1.gif'),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ]);
+                  }
+                  if (snapshot.data == "Verified") {
+                    return Center(child: CircularProgressIndicator());
+                  }
+                  if (snapshot.data == "invalid") {
+                    return Center(
+                      child: Text(""),
+                    );
+                  } else if (snapshot.data == "complete") {
+                    return Text("");
+                  } else
+                    return Text("dhxfp");
+                })
           ],
         ));
   }
