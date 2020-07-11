@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mainpage_eventout/MainPage/OrganizationCard.dart';
-import 'package:mainpage_eventout/MainPage/OrganizationClass.dart';
-import 'package:mainpage_eventout/MainPage/body.dart';
-
-import 'constant.dart';
+import 'package:EventOut/MainPage/OrganizationCard.dart';
+import 'package:EventOut/MainPage/OrganizationClass.dart';
+import 'package:EventOut/MainPage/body.dart';
+import 'package:EventOut/constants/constants.dart';
 
 class MainBody extends StatefulWidget {
   @override
@@ -37,7 +36,7 @@ class _MainBodyState extends State<MainBody> {
                     padding: const EdgeInsets.only(top: 0),
                     child: ListView.builder(
                         itemCount: 6,
-                        itemBuilder: (context, index) => OrganizartionCard()),
+                        itemBuilder: (context, index) => OrganizationCard()),
                   )
                 ],
               ),
