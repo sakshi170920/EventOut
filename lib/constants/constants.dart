@@ -10,14 +10,14 @@ const kMessageTextFieldDecoration = InputDecoration(
   contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
   hintText: 'Say Something',
   hintStyle: TextStyle(
-    fontStyle: FontStyle.italic,color: Color(0xFFD8DCF5),
+    fontStyle: FontStyle.italic,
+    color: Color(0xFFD8DCF5),
   ),
   border: InputBorder.none,
 );
 
 const kMessageContainerDecoration = BoxDecoration(
   color: Color(0xFF9599B4),
-
 );
 
 const kTextFieldDecoration = InputDecoration(
@@ -40,6 +40,7 @@ enum ChatType {
   GROUP,
   INDIVIDUAL,
 }
+
 class CustomDialog extends StatelessWidget {
   final String title, description, buttonText;
   final Image image;
@@ -118,23 +119,30 @@ class CustomDialog extends StatelessWidget {
             child: Container(
               height: 120,
               width: 10,
-              decoration:   BoxDecoration(
-              borderRadius: BorderRadius.circular(60),
-              color: Colors.white,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(60),
+                color: Colors.white,
               ),
               child: Image(image: AssetImage('assets/logo.png')),
             ),
           ),
-
-
         ],
       ),
     );
   }
 }
+
+const constPadding = 20.0;
+
+const constShadow = BoxShadow(
+  offset: Offset(0, 15),
+  blurRadius: 27,
+  color: Colors.black12, // Black color with 12% opacity
+);
+
 class Consts {
   Consts._();
 
   static const double padding = 16.0;
   static const double avatarRadius = 66.0;
-  }
+}
