@@ -9,10 +9,9 @@ import 'package:EventOut/SharedPreferencesMethods.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 class ProfileCompleter extends StatefulWidget {
-  static String id =  'profilecompleter';
-@override
+  static String id = 'profilecompleter';
+  @override
   _ProfileCompleterState createState() => _ProfileCompleterState();
-
 }
 
 class _ProfileCompleterState extends State<ProfileCompleter> {
@@ -25,13 +24,14 @@ class _ProfileCompleterState extends State<ProfileCompleter> {
   void initState() {
     super.initState();
     _pageController = PageController(initialPage: 0);
-
   }
+
   @override
   void dispose() {
     _pageController.dispose();
     super.dispose();
   }
+
   List<Widget> _buildPageIndicator() {
     List<Widget> list = [];
     for (int i = 0; i < _numPages; i++) {
@@ -52,13 +52,12 @@ class _ProfileCompleterState extends State<ProfileCompleter> {
       ),
     );
   }
+
   @override
   Widget build(BuildContext context) {
-
-
     return SafeArea(
       child: Scaffold(
-        backgroundColor:const Color(0xff101010),
+        backgroundColor: const Color(0xff101010),
         resizeToAvoidBottomInset: false,
         body: ModalProgressHUD(
           inAsyncCall: spinner,
@@ -66,24 +65,20 @@ class _ProfileCompleterState extends State<ProfileCompleter> {
             children: <Widget>[
               PageView(
                 controller: _pageController,
-              physics: NeverScrollableScrollPhysics(),
-              onPageChanged: (int page){
+                physics: NeverScrollableScrollPhysics(),
+                onPageChanged: (int page) {
                   setState(() {
                     _currentPagevalue = page;
                   });
                 },
-
-
                 children: <Widget>[
                   Password(),
                   AddImage(),
                   Name(),
                   Invite(),
                 ],
-
               ),
               Container(
-                
                 margin: EdgeInsets.only(bottom: 50),
                 child: Align(
                   alignment: Alignment.bottomCenter,
@@ -95,105 +90,96 @@ class _ProfileCompleterState extends State<ProfileCompleter> {
               ),
               _currentPagevalue != _numPages - 1
                   ? Align(
-                    alignment: FractionalOffset.bottomRight,
-                    child: Container(
-                      margin: EdgeInsets.all(20),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
-                        children: <Widget>[
-
-                          GestureDetector(
-                            onTap: (){
-                              _pageController.previousPage(
-                                duration: Duration(milliseconds: 500),
-                                curve: Curves.ease,
-                              );
-                            },
-                            child: Text(
-                              'Prev',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 22.0,
+                      alignment: FractionalOffset.bottomRight,
+                      child: Container(
+                        margin: EdgeInsets.all(20),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            GestureDetector(
+                              onTap: () {
+                                _pageController.previousPage(
+                                  duration: Duration(milliseconds: 500),
+                                  curve: Curves.ease,
+                                );
+                              },
+                              child: Text(
+                                'Prev',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 22.0,
+                                ),
                               ),
                             ),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              _pageController.nextPage(
-                                duration: Duration(milliseconds: 500),
-                                curve: Curves.ease,
-                              );
-                            },
-                            child: Text(
-                              'Next',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 22.0,
+                            GestureDetector(
+                              onTap: () {
+                                _pageController.nextPage(
+                                  duration: Duration(milliseconds: 500),
+                                  curve: Curves.ease,
+                                );
+                              },
+                              child: Text(
+                                'Next',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 22.0,
+                                ),
                               ),
                             ),
-                          ),
-
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  )
+                    )
                   : Text(''),
             ],
-
-
-
           ),
         ),
         bottomSheet: _currentPagevalue == _numPages - 1
             ? Container(
-          height: 100.0,
-          width: double.infinity,
-          color: const Color(0xff734F96),
-          child: GestureDetector(
-            onTap: () async {
-              setState(() {
-                spinner = true;
-              });
-              String email = await  getEmail();
-              String fname = await getFirstName();
-              String lname = await getLastName();
-              String image = await getImage();
-              String imageFileName = await getImageFileName();
-              String password = await getPassword();
-              print(image);
-              bool register = await LoginDetails.registerUser(email, fname, lname, password,'','');
+                height: 100.0,
+                width: double.infinity,
+                color: const Color(0xff734F96),
+                child: GestureDetector(
+                  onTap: () async {
+                    setState(() {
+                      spinner = true;
+                    });
+                    String email = await getEmail();
+                    String fname = await getFirstName();
+                    String lname = await getLastName();
+                    String image = await getImage();
+                    String imageFileName = await getImageFileName();
+                    String password = await getPassword();
+                    print(image);
+                    bool register = await LoginDetails.registerUser(
+                        email, fname, lname, password, '', '');
 
-              if(register)
-                {
-                  await setLoginStatus(true);
-                  navigateToContactList(context) ;
-                }
-              else
-                print('invalid register');
-              setState(() {
-                spinner = false;
-              });
-            },
-              child: Center(
-              child: Padding(
-                padding: EdgeInsets.only(bottom: 30.0),
-                child: Text(
-                  'Get started',
-                  style: TextStyle(
-                    color: Colors.white70,
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,
+                    if (register) {
+                      await setLoginStatus(true);
+                      navigateToContactList(context);
+                    } else
+                      print('invalid register');
+                    setState(() {
+                      spinner = false;
+                    });
+                  },
+                  child: Center(
+                    child: Padding(
+                      padding: EdgeInsets.only(bottom: 30.0),
+                      child: Text(
+                        'Get started',
+                        style: TextStyle(
+                          color: Colors.white70,
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
-          ),
-        )
+              )
             : Text(''),
-
       ),
     );
-
   }
 }
