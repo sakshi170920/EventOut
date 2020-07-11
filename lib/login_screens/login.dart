@@ -61,6 +61,7 @@ class _LoginState extends State<Login> {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Column(
+
                           children: <Widget>[
                             SizedBox(
                               width: double.infinity,
@@ -169,6 +170,7 @@ class _LoginState extends State<Login> {
                             Expanded(
                               flex: 3,
                               child: Container(
+
                                 margin: EdgeInsets.symmetric(
                                     horizontal: 80, vertical: 10),
                                 decoration: BoxDecoration(
