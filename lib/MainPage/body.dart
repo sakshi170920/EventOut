@@ -1,5 +1,6 @@
+import 'package:EventOut/constants/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:mainpage_eventout/MainPage/constant.dart';
+
 
 class body extends StatelessWidget {
   @override

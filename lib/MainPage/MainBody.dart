@@ -1,9 +1,8 @@
+import 'package:EventOut/constants/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:mainpage_eventout/MainPage/OrganizationCard.dart';
-import 'package:mainpage_eventout/MainPage/OrganizationClass.dart';
-import 'package:mainpage_eventout/MainPage/body.dart';
 
-import 'constant.dart';
+import 'OrganizationCard.dart';
+
 
 class MainBody extends StatefulWidget {
   @override
@@ -21,7 +20,7 @@ class _MainBodyState extends State<MainBody> {
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('assets/images/back.jpeg'),
+                  image: AssetImage('assets/images/MP_bg.jpeg'),
                   fit: BoxFit.cover),
             ), //BACKGROUND IMAGE
           ),
