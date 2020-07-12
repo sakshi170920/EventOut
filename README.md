@@ -1,4 +1,4 @@
-# Plannerz App
+# EventOut  
 
 A new Flutter application.
 
