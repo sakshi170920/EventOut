@@ -1,10 +1,11 @@
-import 'package:EventOut/constants/constants.dart';
 import 'package:flutter/material.dart';
-
-import 'OrganizationCard.dart';
-
-
+import 'package:EventOut/MainPage/OrganizationCard.dart';
+import 'package:EventOut/MainPage/OrganizationClass.dart';
+import 'package:EventOut/MainPage/body.dart';
+import 'package:EventOut/constants/constants.dart';
 class MainBody extends StatefulWidget {
+  static String id = 'MainBody';
+
   @override
   _MainBodyState createState() => _MainBodyState();
 }
@@ -20,7 +21,7 @@ class _MainBodyState extends State<MainBody> {
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('assets/images/MP_bg.jpeg'),
+                  image: AssetImage('assets/MP_bg.jpeg'),
                   fit: BoxFit.cover),
             ), //BACKGROUND IMAGE
           ),
@@ -36,7 +37,7 @@ class _MainBodyState extends State<MainBody> {
                     padding: const EdgeInsets.only(top: 0),
                     child: ListView.builder(
                         itemCount: 6,
-                        itemBuilder: (context, index) => OrganizartionCard()),
+                        itemBuilder: (context, index) => OrganizationCard()),
                   )
                 ],
               ),

@@ -31,7 +31,7 @@ class _GoogleoremailState extends State<Googleoremail> {
 
   @override
   Widget build(BuildContext context) {
-    _next_page() async {
+    _nextPage() async {
       _streamController.add("checking");
       if (_formKey.currentState.validate() &&
           await LoginDetails.isValidRegisterEmail(mEmail)) {
@@ -50,14 +50,6 @@ class _GoogleoremailState extends State<Googleoremail> {
         backgroundColor: const Color(0xff101010),
         body: Stack(
           children: <Widget>[
-            Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: const AssetImage('assets/bg1.gif'),
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
             SafeArea(
               child: Column(
                 children: <Widget>[
@@ -229,7 +221,7 @@ class _GoogleoremailState extends State<Googleoremail> {
                                 child: Center(
                                   child: GestureDetector(
                                     onTap: () {
-                                      _next_page();
+                                      _nextPage();
                                     },
                                     child: Text(
                                       "Continue with Email",
@@ -264,7 +256,7 @@ class _GoogleoremailState extends State<Googleoremail> {
                       Center(
                         child: Container(
                           decoration: BoxDecoration(
-                            color: Colors.black,
+                            color: const Color(0xff171717),
                             image: DecorationImage(
                               image: const AssetImage('assets/loading1.gif'),
                             ),

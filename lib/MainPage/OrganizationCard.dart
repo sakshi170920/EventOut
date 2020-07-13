@@ -1,11 +1,9 @@
-import 'package:EventOut/constants/constants.dart';
 import 'package:flutter/material.dart';
-
-
 import 'package:EventOut/MainPage/OrganizationClass.dart';
+import 'package:EventOut/constants/constants.dart';
 
-class OrganizartionCard extends StatelessWidget {
-  const OrganizartionCard({
+class OrganizationCard extends StatelessWidget {
+  const OrganizationCard({
     Key key,
     this.itemIndex,
     this.og,

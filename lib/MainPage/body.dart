@@ -1,8 +1,7 @@
 import 'package:EventOut/constants/constants.dart';
 import 'package:flutter/material.dart';
 
-
-class body extends StatelessWidget {
+class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(

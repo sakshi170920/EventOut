@@ -2,12 +2,14 @@ import 'dart:async';
 import 'dart:ui';
 import 'package:EventOut/Chat/DatabaseMethods.dart';
 import 'package:EventOut/NavigationMethods.dart';
+import 'file:///C:/Users/ASUS/AndroidStudioProjects/flutter_app1/EventOut/lib/TaskScreens/CustomAppBar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:EventOut/constants/constants.dart';
 import 'package:EventOut/SharedPreferencesMethods.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter/widgets.dart';
 
 String userEmail = '';
 class ChatRoom extends StatefulWidget {
@@ -64,31 +66,12 @@ class _ChatRoomState extends State<ChatRoom> {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          color: new Color(0xFF241333),
+          color: DeepPurple,
           child: Column(
             children: <Widget>[
               Expanded(
                 flex: 2,
-                  child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 50,vertical: 20),
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(bottomLeft: Radius.circular(100)),
-                      color: Colors.white,
-                    ),
-                    child: Text(
-                      'Live Chat',
-
-                      textAlign : TextAlign.start,
-                      style: TextStyle(
-                      fontSize: 30,
-                      color: Colors.black87,
-                        fontWeight: FontWeight.bold,
-
-                    ),
-                    ),
-
-                  )),
+                  child: CustomAppBar('EO Chat' , Alignment.centerLeft)),
               Expanded(
                 flex: 15,
                 child: Column(
@@ -114,8 +97,8 @@ class _ChatRoomState extends State<ChatRoom> {
                               ),
                             ),
                           ),
-                          FlatButton(
-                            onPressed: () {
+                          GestureDetector(
+                            onTap: () {
                               messageTextController.clear();
 
                               widget.databaseMethods.addMessage(groupId, subGroupId, messageText, userEmail , Timestamp.now());
@@ -123,7 +106,10 @@ class _ChatRoomState extends State<ChatRoom> {
                               Timer(Duration(milliseconds: 500),
                                       () => controller.jumpTo(controller.position.minScrollExtent));
                             },
-                            child: Icon(Icons.send,color: Color(0xFF4A516B),),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 0,horizontal: 20),
+                              child: Icon(Icons.send,color: LightGrey),
+                            ),
                           ),
                         ],
                       ),
@@ -155,7 +141,7 @@ class MessagesStream extends StatelessWidget {
         if (!snapshot.hasData) {
           return Center(
             child: CircularProgressIndicator(
-              backgroundColor: Colors.lightBlueAccent,
+              backgroundColor: Blue,
             ),
           );
         }
@@ -226,7 +212,7 @@ class MessageBubble extends StatelessWidget {
                 bottomRight: Radius.circular(30.0),
                 topRight: Radius.circular(30.0),
               ),
-                color: isMe ? new Color(0xFF5E4D69) : new Color(0xFF8A56AB),
+                color: isMe ? Lavender :  Purple,
 
               ),
               child: Padding(
@@ -236,7 +222,7 @@ class MessageBubble extends StatelessWidget {
                   child: Text(
                     text,
                     style: TextStyle(
-                      color: Colors.white70,
+                      color:LightGrey,
                       fontSize: 15,
 
                     ),

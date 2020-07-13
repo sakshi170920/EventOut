@@ -3,11 +3,9 @@ import 'package:EventOut/login_screens/ProfileCompleter.dart';
 import 'package:EventOut/login_screens/googleoremail.dart';
 import 'package:EventOut/login_screens/login.dart';
 import 'package:EventOut/Chat/chatRoom.dart';
-
+import 'package:EventOut/MainPage/MainBody.dart';
 import 'package:EventOut/Chat/ContactList.dart';
 import 'package:EventOut/constants/constants.dart';
-import 'package:EventOut/SharedPreferencesMethods.dart';
-
 
 Future navigateToProfileCompleter(context ) async {
   Navigator.pushNamed(context, ProfileCompleter.id );
@@ -17,6 +15,9 @@ Future navigateToClubList(context ) async {
 }
 Future navigateToContactList(context ) async {
   Navigator.pushNamed(context, ContactList.id );
+}
+Future navigateToMainBody(context ) async {
+  Navigator.pushNamed(context, MainBody.id );
 }
 Future navigateToGoogleorEmail(context) async {
   Navigator.pushNamed(context, Googleoremail.id);

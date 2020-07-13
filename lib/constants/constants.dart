@@ -1,4 +1,14 @@
 import 'package:flutter/material.dart';
+const Color Purple = Color(0xFF8A56AC);
+const Color MediumPurple = Color(0xFF5F4591);
+const Color DarkPurple = Color(0xFF352641);
+const Color DeepPurple = Color(0xFF241332);
+const Color Grey = Color(0xFF9599b3);
+const Color LightGrey = Color(0xFFF1f0f2);
+const Color Blue = Color(0xFF4f8dcb);
+const Color Pink = Color(0xFFD47FA6);
+const Color Lavender = Color(0xFF5E4D69);
+
 
 const kSendButtonTextStyle = TextStyle(
   color: Colors.lightBlueAccent,
