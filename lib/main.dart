@@ -1,11 +1,11 @@
 import 'package:EventOut/Chat/chatRoom.dart';
-import 'package:EventOut/organisation/ListJuniors.dart';
+import 'package:EventOut/TaskScreens/task_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:EventOut/login_screens/googleoremail.dart';
 import 'package:EventOut/login_screens/login.dart';
 import 'package:EventOut/login_screens/loginorsignup.dart';
 import 'package:EventOut/login_screens/ProfileCompleter.dart';
-
+import 'MainPage/MainBody.dart';
 import 'package:EventOut/Chat/ContactList.dart';
 import 'SharedPreferencesMethods.dart';
 
@@ -14,7 +14,8 @@ void main() async {
   bool logged = await getLoginStatus();
 
   final MyApp myApp = MyApp(
-    initialRoute: logged ? ContactList.id : LoginSignUp.id,
+    initialRoute: logged ? MainBody.id : LoginSignUp.id,
+
   );
   runApp(myApp);
 }
@@ -28,7 +29,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Server',
       routes: {
         LoginSignUp.id: (context) => LoginSignUp(),
         Googleoremail.id: (context) => Googleoremail(),
@@ -38,6 +38,8 @@ class MyApp extends StatelessWidget {
         ContactList.id: (context) => ContactList(),
         EventList.id: (context) => EventList(),
         ClubList.id: (context) => ClubList(),
+        MainBody.id: (context) => MainBody(),
+        TaskHandler.id : (context) => TaskHandler(),
       },
       initialRoute: initialRoute,
       //home: ListJunior(),

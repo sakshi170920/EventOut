@@ -3,8 +3,9 @@ import 'package:EventOut/MainPage/OrganizationCard.dart';
 import 'package:EventOut/MainPage/OrganizationClass.dart';
 import 'package:EventOut/MainPage/body.dart';
 import 'package:EventOut/constants/constants.dart';
-
 class MainBody extends StatefulWidget {
+  static String id = 'MainBody';
+
   @override
   _MainBodyState createState() => _MainBodyState();
 }
@@ -20,7 +21,7 @@ class _MainBodyState extends State<MainBody> {
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('assets/images/back.jpeg'),
+                  image: AssetImage('assets/MP_bg.jpeg'),
                   fit: BoxFit.cover),
             ), //BACKGROUND IMAGE
           ),

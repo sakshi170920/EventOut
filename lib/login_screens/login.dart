@@ -195,7 +195,7 @@ class _LoginState extends State<Login> {
                                         else {
                                           setEmail(email);
                                           await setLoginStatus(true);
-                                          navigateToContactList(context);
+                                          navigateToMainBody(context);
                                         }
                                       } catch (e) {
                                         print('invalid user');

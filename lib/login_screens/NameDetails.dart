@@ -145,24 +145,34 @@ class _NameState extends State<Name> {
                 flex: 3,
                 child: Row(
                   children: <Widget>[
-                    Checkbox(
-                      activeColor: Colors.white,
-                      onChanged: (value){
-                        isChecked = value;
-                      },
+                    Expanded(
+                      flex :1,
+                      child: Checkbox(
+
+                        value: isChecked,
+                        activeColor: Colors.white,
+                        checkColor: const Color(0xff101010),
+                        onChanged: (value){
+                          setState(() {
+                            isChecked = value;
+                          });
+                        },
+                      ),
                     ),
 
-                    Container(
-                      padding: EdgeInsets.all(50),
+                    Expanded(
+                      flex: 3,
+                      child: Container(
+                        padding: EdgeInsets.all(7),
+                        child: Text("By clicking  accept the Terms of Services and Privacy Policy",
+                          style: TextStyle(
+                            fontFamily: 'MyriadPro-Regular',
+                            fontSize: 12,
+                            color: Colors.white54,
+                          ),
+                          textAlign: TextAlign.center,
 
-                      child: Text("By clicking  accept the Terms of Services and Privacy Policy",
-                        style: TextStyle(
-                          fontFamily: 'MyriadPro-Regular',
-                          fontSize: 12,
-                          color: Colors.white54,
                         ),
-                        textAlign: TextAlign.center,
-
                       ),
                     ),
                   ],
