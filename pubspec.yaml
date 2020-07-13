@@ -35,6 +35,8 @@ dependencies:
   fluttertoast: ^4.0.1
   intl: ^0.16.1
   flutter_launcher_icons: ^0.7.5
+  flutter_svg: ^0.18.0
+  roundcheckbox: ^1.0.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -84,7 +86,7 @@ flutter:
         - asset: assets/fonts/Helvetica.ttf
     - family: SegoeUI-Bold
       fonts:
-        - asset: fonts/segoe-ui-bold.ttf
+        - asset: assets/fonts/segoe-ui-bold.ttf
 #        - asset: fonts/TrajanPro_Bold.ttf
 #          weight: 700
 #  #
