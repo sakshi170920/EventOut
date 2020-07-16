@@ -1,16 +1,17 @@
-import 'package:flutter/material.dart';
-import 'package:EventOut/MainPage/OrganizationClass.dart';
 import 'package:EventOut/constants/constants.dart';
+import 'package:flutter/material.dart';
 
-class OrganizationCard extends StatelessWidget {
-  const OrganizationCard({
-    Key key,
-    this.itemIndex,
-    this.og,
-  }) : super(key: key);
+import 'package:EventOut/MainPage/OrganizationClass.dart';
 
-  final int itemIndex;
-  final OrganizationClass og;
+class OrganizartionCard extends StatelessWidget {
+  final String org_id, org_name, description, owner;
+
+  const OrganizartionCard({
+    this.org_id,
+    this.org_name,
+    this.description,
+    this.owner,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +22,10 @@ class OrganizationCard extends StatelessWidget {
           horizontal: constPadding * 1.8, vertical: constPadding / 2),
       //color: Colors.blueAccent,
       decoration: BoxDecoration(
-          //color: Colors.blueAccent,
-          ),
+        color: Color(0XFF8A56AC).withOpacity(0.4),
+        boxShadow: [constShadow],
+        borderRadius: BorderRadius.circular(constPadding * 2.5),
+      ),
       child: Stack(
         alignment: Alignment.bottomCenter,
         children: <Widget>[
@@ -39,14 +42,18 @@ class OrganizationCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(constPadding * 2.2)),
               child: Column(
                 children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        top: constPadding / 2, right: constPadding * 3),
-                    child: Text(
-                      "TedX Vit Pune,India.",
-                      textAlign: TextAlign.right,
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  Container(
+                    width: 200,
+//                    decoration: BoxDecoration(color: Colors.red),
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                          top: constPadding, right: constPadding),
+                      child: Text(
+                        org_name.toUpperCase(),
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16),
+                      ),
                     ),
                   ),
                   Divider(
@@ -58,7 +65,7 @@ class OrganizationCard extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
-                        left: constPadding, top: constPadding / 2),
+                        left: constPadding, top: constPadding / 4),
                     child: Row(
                       //ROw
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -152,44 +159,4 @@ class OrganizationCard extends StatelessWidget {
       ),
     );
   }
-}
-
-Positioned p() {
-  return Positioned(
-      top: 0,
-      left: 0,
-      child: SizedBox(
-        height: 100,
-        //width: size.width,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Spacer(),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: constPadding * 1.3, vertical: constPadding / 2),
-              child: Text(
-                "TedX Vit Pune,India.",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-              ),
-            ),
-            Divider(
-              color: Colors.grey.withOpacity(0.6),
-              thickness: 2,
-              indent: 30,
-              endIndent: 100,
-              height: 1,
-            ),
-            Spacer(),
-            Row(
-              children: <Widget>[
-                IconButton(icon: Icon(Icons.message), onPressed: () {}),
-                IconButton(icon: Icon(Icons.message), onPressed: () {}),
-                IconButton(icon: Icon(Icons.message), onPressed: () {}),
-                IconButton(icon: Icon(Icons.message), onPressed: () {}),
-              ],
-            )
-          ],
-        ),
-      ));
 }
