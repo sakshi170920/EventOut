@@ -1,7 +1,10 @@
+import 'package:EventOut/OrganizationPage.dart/OrganizationPageMainBody.dart';
 import 'package:EventOut/constants/constants.dart';
 import 'package:flutter/material.dart';
 
-import 'package:EventOut/MainPage/OrganizationClass.dart';
+import 'OrganizationClass.dart';
+
+const String basic_url = 'https://eventzy123.000webhostapp.com';
 
 class OrganizartionCard extends StatelessWidget {
   final String org_id, org_name, description, owner;
@@ -16,6 +19,8 @@ class OrganizartionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    OrganizationClass temp = new OrganizationClass(
+        this.org_id, this.org_name.toUpperCase(), this.description, this.owner);
     return Container(
       height: 130,
       margin: EdgeInsets.symmetric(
@@ -48,11 +53,22 @@ class OrganizartionCard extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.only(
                           top: constPadding, right: constPadding),
-                      child: Text(
-                        org_name.toUpperCase(),
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 16),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => OrganizationPageMainBody(),
+                              settings: RouteSettings(arguments: temp),
+                            ),
+                          );
+                        },
+                        child: Text(
+                          org_name.toUpperCase(),
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 16),
+                        ),
                       ),
                     ),
                   ),
@@ -159,4 +175,44 @@ class OrganizartionCard extends StatelessWidget {
       ),
     );
   }
+}
+
+Positioned p() {
+  return Positioned(
+      top: 0,
+      left: 0,
+      child: SizedBox(
+        height: 100,
+        //width: size.width,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Spacer(),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                  horizontal: constPadding * 1.3, vertical: constPadding / 2),
+              child: Text(
+                "TedX Vit Pune,India.",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              ),
+            ),
+            Divider(
+              color: Colors.grey.withOpacity(0.6),
+              thickness: 2,
+              indent: 30,
+              endIndent: 100,
+              height: 1,
+            ),
+            Spacer(),
+            Row(
+              children: <Widget>[
+                IconButton(icon: Icon(Icons.message), onPressed: () {}),
+                IconButton(icon: Icon(Icons.message), onPressed: () {}),
+                IconButton(icon: Icon(Icons.message), onPressed: () {}),
+                IconButton(icon: Icon(Icons.message), onPressed: () {}),
+              ],
+            )
+          ],
+        ),
+      ));
 }
