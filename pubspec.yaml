@@ -87,7 +87,7 @@ flutter:
         - asset: assets/fonts/Helvetica.ttf
     - family: SegoeUI-Bold
       fonts:
-        - asset: fonts/segoe-ui-bold.ttf
+        - asset: assets/fonts/segoe-ui-bold.ttf
 #        - asset: fonts/TrajanPro_Bold.ttf
 #          weight: 700
 #  #

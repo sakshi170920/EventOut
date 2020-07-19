@@ -54,7 +54,9 @@ class TasksScreen extends StatelessWidget {
         children: <Widget>[
           Expanded(
             flex: 2,
-              child: CustomAppBar('Tasks',Alignment.centerLeft)),
+              child: CustomAppBar(text: 'Tasks',align : Alignment.centerLeft,borderWidth: 2.0,
+              ),
+          ),
           Expanded(
             flex: 5,
             child: Container(

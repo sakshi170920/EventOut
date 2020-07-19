@@ -25,7 +25,7 @@ Future navigateToGoogleorEmail(context) async {
 Future navigateToLogin(context) async {
   Navigator.pushNamed(context, Login.id);
 }
-Future navigateToChatRoom({context , String group , String subGroupId , ChatType type}) async {
+Future navigateToChatRoom({BuildContext context , String group , String subGroupId , ChatType type}) async {
   Navigator.pushNamed(context, ChatRoom.id , arguments: ChatRoomArguments(group, subGroupId ,type));
 }
 

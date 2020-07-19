@@ -10,7 +10,6 @@ class CurvedRectangleClipper extends CustomClipper<Path> {
     path.lineTo(0, size.height - offset);
     var firstEndpoint = Offset(offset, size.height);
     path.arcToPoint(firstEndpoint, radius: Radius.circular(-offset),clockwise: false);
-
     path.lineTo(size.width, size.height);
     path.lineTo(size.width, offset);
     path.lineTo(offset, offset);
@@ -44,7 +43,6 @@ class CurvedListItemClipper extends StatelessWidget {
           bottom: 32,
         ),
         child: ListView.builder(
-
           scrollDirection: Axis.horizontal,
 
           itemBuilder: (BuildContext context , int index){

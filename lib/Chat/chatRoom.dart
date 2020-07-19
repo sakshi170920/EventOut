@@ -71,7 +71,7 @@ class _ChatRoomState extends State<ChatRoom> {
             children: <Widget>[
               Expanded(
                 flex: 2,
-                  child: CustomAppBar('EO Chat' , Alignment.centerLeft)),
+                  child: CustomAppBar(text: 'EO Box' ,align:  Alignment.centerLeft,borderWidth: 0.0,)),
               Expanded(
                 flex: 15,
                 child: Column(
