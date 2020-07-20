@@ -164,7 +164,7 @@ AppBar buildAppBar() {
     ],
     title: Container(
       margin: EdgeInsets.only(top: constPadding),
-      child: Text("EvenOut",
+      child: Text("EventOut",
           style: TextStyle(
             fontSize: 35,
           )),

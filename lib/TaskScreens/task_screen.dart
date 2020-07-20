@@ -52,7 +52,15 @@ class TasksScreen extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
+<<<<<<< HEAD
           Expanded(flex: 2, child: CustomAppBar('Tasks', Alignment.centerLeft)),
+=======
+          Expanded(
+            flex: 2,
+              child: CustomAppBar(text: 'Tasks',align : Alignment.centerLeft,borderWidth: 2.0,
+              ),
+          ),
+>>>>>>> 3754acf4b119421e42d45c5049a045d0f56113c2
           Expanded(
             flex: 5,
             child: Container(
