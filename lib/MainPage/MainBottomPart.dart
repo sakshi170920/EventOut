@@ -1,8 +1,6 @@
 import 'package:EventOut/constants/constants.dart';
 import 'package:flutter/material.dart';
 
-
-
 class MainBottomPart extends StatelessWidget {
   const MainBottomPart({
     Key key,

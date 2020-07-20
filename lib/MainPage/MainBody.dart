@@ -1,13 +1,16 @@
+import 'package:EventOut/OrganizationPage.dart/OrganizationPageMainBody.dart';
 import 'package:EventOut/constants/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
-import 'MainBottomPart.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
+import 'package:http/http.dart' as http;
+
+import 'dart:convert';
+
+import 'MainBottomPart.dart';
 import 'OrganizationCard.dart';
 import 'OrganizationClass.dart';
-
-const String basic_url = 'https://eventzy123.000webhostapp.com';
 
 List<OrganizationClass> us = [];
 
@@ -56,19 +59,36 @@ class _MainBodyState extends State<MainBody> {
                           itemBuilder: (BuildContext contxt, int index) {
                             print("listview on ground");
                             return OrganizartionCard(
-                                org_id: snapshot.data[index].org_id,
-                                org_name: snapshot.data[index].org_name,
-                                description: snapshot.data[index].description,
-                                owner: snapshot.data[index].owner);
+                              org_id: snapshot.data[index].org_id,
+                              org_name: snapshot.data[index].org_name,
+                              description: snapshot.data[index].description,
+                              owner: snapshot.data[index].owner,
+                              permission: false,
+                            );
                           },
                         );
                       }
                     },
                   )),
             )),
-            MainBottomPart()
+            MainBottomPart(),
           ]),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          OrganizationClass temp = new OrganizationClass(
+              "007", "Name ", "Your description", "you ", true);
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => OrganizationPageMainBody(),
+              settings: RouteSettings(arguments: temp),
+            ),
+          );
+        },
+        elevation: 25,
+        splashColor: Color(0XFF8A56AC),
       ),
     );
   }
@@ -84,7 +104,7 @@ class _MainBodyState extends State<MainBody> {
 
     for (var x in data) {
       OrganizationClass temp = new OrganizationClass(
-          x["org_id"], x["org_name"], x["description"], x["owner"]);
+          x["org_id"], x["org_name"], x["description"], x["owner"], false);
       users.add(temp);
     }
     print(users.length);

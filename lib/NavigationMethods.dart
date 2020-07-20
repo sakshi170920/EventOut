@@ -7,37 +7,43 @@ import 'package:EventOut/MainPage/MainBody.dart';
 import 'package:EventOut/Chat/ContactList.dart';
 import 'package:EventOut/constants/constants.dart';
 
-Future navigateToProfileCompleter(context ) async {
-  Navigator.pushNamed(context, ProfileCompleter.id );
+Future navigateToProfileCompleter(context) async {
+  Navigator.pushNamed(context, ProfileCompleter.id);
 }
-Future navigateToClubList(context ) async {
-  Navigator.pushNamed(context, ClubList.id );
+
+Future navigateToClubList(context) async {
+  Navigator.pushNamed(context, ClubList.id);
 }
-Future navigateToContactList(context ) async {
-  Navigator.pushNamed(context, ContactList.id );
+
+Future navigateToContactList(context) async {
+  Navigator.pushNamed(context, ContactList.id);
 }
-Future navigateToMainBody(context ) async {
-  Navigator.pushNamed(context, MainBody.id );
-}
+
+// Future navigateToMainBody(context ) async {
+//   Navigator.pushNamed(context, MainBody.id );
+// }
 Future navigateToGoogleorEmail(context) async {
   Navigator.pushNamed(context, Googleoremail.id);
 }
+
 Future navigateToLogin(context) async {
   Navigator.pushNamed(context, Login.id);
 }
-Future navigateToChatRoom({context , String group , String subGroupId , ChatType type}) async {
-  Navigator.pushNamed(context, ChatRoom.id , arguments: ChatRoomArguments(group, subGroupId ,type));
+
+Future navigateToChatRoom(
+    {context, String group, String subGroupId, ChatType type}) async {
+  Navigator.pushNamed(context, ChatRoom.id,
+      arguments: ChatRoomArguments(group, subGroupId, type));
 }
 
-Future navigateToEventList(context , String groupId) async {
-  Navigator.pushNamed(context, EventList.id ,arguments: groupId );
+Future navigateToEventList(context, String groupId) async {
+  Navigator.pushNamed(context, EventList.id, arguments: groupId);
 }
 
-class ChatRoomArguments{
+class ChatRoomArguments {
   String group;
   String subGroupId;
   ChatType type;
 
   ChatRoomArguments(this.group, this.subGroupId, this.type);
 }
-

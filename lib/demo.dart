@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
-import 'package:flutter_svg/flutter_svg.dart';
+
+//import 'package:flutter_svg/flutter_svg.dart';
 class Music extends StatelessWidget {
   static String id = "Music";
   @override

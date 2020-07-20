@@ -4,7 +4,7 @@ import 'package:EventOut/SharedPreferencesMethods.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-const String name = ""; //share refrence
+String name = "tarun".hashCode.toString(); //share refrence
 const String org_name = "TRF"; //share refrence
 
 class AddMember extends StatefulWidget {
@@ -82,7 +82,7 @@ class _AddMemberState extends State<AddMember> {
             child: Text('write'),
             onPressed: () {
               dbref
-                  .child(_member_name.text)
+                  .child(_member_name.text.hashCode.toString())
                   .set({'from': name, 'org_id': org_name});
             },
           ),
@@ -96,7 +96,7 @@ class _AddMemberState extends State<AddMember> {
               dbref.once().then((DataSnapshot datasnapshot) {
                 print(datasnapshot.value);
                 datasnapshot.value.forEach((key, value) {
-                  if (key == 'xyz') {
+                  if (key == name) {
                     print('found the invitation');
                   }
 

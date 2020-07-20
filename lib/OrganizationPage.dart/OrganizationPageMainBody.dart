@@ -1,10 +1,29 @@
+import 'dart:convert';
+
+import 'package:EventOut/LoginDatabase/LoginDetails.dart';
 import 'package:EventOut/MainPage/OrganizationClass.dart';
 import 'package:EventOut/constants/constants.dart';
+import 'package:EventOut/organisation/AddMember.dart';
 import 'package:flutter/material.dart';
+
+import 'package:http/http.dart' as http;
 
 import 'OrganizationInnerListView.dart';
 
-class OrganizationPageMainBody extends StatelessWidget {
+//const String basic_url = 'https://eventzy123.000webhostapp.com';
+
+TextEditingController _name = new TextEditingController();
+TextEditingController _desp = new TextEditingController();
+String Universal_id = "";
+
+class OrganizationPageMainBody extends StatefulWidget {
+  @override
+  _OrganizationPageMainBodyState createState() =>
+      _OrganizationPageMainBodyState();
+}
+
+class _OrganizationPageMainBodyState extends State<OrganizationPageMainBody> {
+  bool isSwitched = false;
   @override
   Widget build(BuildContext context) {
     final OrganizationClass org_info =
@@ -19,14 +38,209 @@ class OrganizationPageMainBody extends StatelessWidget {
             size: size,
           ),
           LightPurpleBG(size: size),
-          WhiteBG(size: size, org_info: org_info)
+          WhiteBG(size: size, org_info: org_info),
+          Align(
+            alignment: Alignment.bottomLeft,
+            child: Switch(
+              value: isSwitched,
+              onChanged: (value) {
+                if (value == true) {
+                  print(_name.text);
+                  print(_desp.text + "sd.mgajksDNGKJHwekjghaw");
+                  isSwitched = true;
+                  //permission = false;
+                  //first_time = true;
+                  org_info.description = _desp.text;
+                  org_info.org_name = _name.text;
+                  org_info.permission = false;
+                  setState(() {});
+                  FutureBuilder(
+                    future: getOrgID(),
+                    builder: (BuildContext context, AsyncSnapshot snapshot) {
+                      if (snapshot.data == false) {
+                        print(false);
+                        print("Not executed Query");
+                      } else {
+                        print(true);
+                        print("Executed query");
+                        print("ID generated +" + snapshot.data);
+                        org_info.org_id = snapshot.data - 1;
+                        Universal_id = org_info.org_id;
+                        return Text("true");
+                      }
+                    },
+                  );
+                  FutureBuilder(
+                    future: PostOrg(org_info.org_id, org_info.org_name,
+                        org_info.description, "Username"),
+                    builder: (BuildContext context, AsyncSnapshot snapshot) {
+                      if (snapshot.data == false) {
+                        print(false);
+                        print("Not executed Query");
+                        CircularProgressIndicator();
+                      } else {
+                        print(true);
+                        print("Executed query");
+                        return Text("true");
+                      }
+                    },
+                  );
+                }
+                print(value);
+              },
+              activeTrackColor: Colors.lightGreenAccent,
+              activeColor: Colors.green,
+            ),
+          )
         ],
       ),
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        print(_name.text);
+        print(_desp.text);
+      }),
     );
+  }
+
+  Future<String> getOrgID() async {
+    var url = basic_url + "/getOrganisationID.php";
+    http.Response response = await http.get(url);
+    print("respomce");
+    print(response.body);
+    var data = jsonDecode(response.body);
+    print("sql data");
+    print(data.toString());
+    if (response.statusCode == 200) {
+      return data.toString();
+    } else
+      return "false";
+  }
+
+  Future<bool> PostOrg(
+      String org_id, String org_name, String description, String owner) async {
+    var url = basic_url + "/postOrganization.php";
+    http.Response response = await http.post(url, body: {
+      //'from_id': "sakshi.oswal18@vit.edu",
+      //'to_id': "oswalsakshi17@gamil.com",
+      //'title': "enventzy",
+      //'description': "The organization managing app",
+      //'due_date': "2020-11-26",
+      //'email': "jag@gmail.com",
+      'org_id': org_id,
+      'org_name': org_name,
+      'description': description,
+      'owner': owner
+    });
+    //print("sdfasfxz");
+    var data = response.body;
+    print(response);
+    print(data);
+    print("post");
+    print(response.statusCode);
+    if (response.statusCode == 200) {
+      return true;
+    } else
+      return false;
   }
 }
 
-class WhiteBG extends StatelessWidget {
+Future<bool> postBelongsTo(
+    String username, String id, String priority, String role) async {
+  var url = basic_url + "/postBelongsto.php";
+  http.Response response = await http.post(url, body: {
+    'email': username,
+    'org_id': id,
+    'priority': priority,
+    'role': role
+  });
+  //print("sdfasfxz");
+  var data = response.body;
+  print(response);
+  print(data);
+  print("post");
+  print(response.statusCode);
+  if (response.statusCode == 200) {
+    return true;
+  } else
+    return false;
+}
+
+void _editbottommodalsheet(context, String id) {
+  TextEditingController _username = new TextEditingController();
+  TextEditingController _rolename = new TextEditingController();
+  showModalBottomSheet(
+      context: context,
+      builder: (BuildContext bc) {
+        return Container(
+          height: MediaQuery.of(context).size.height * 45,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: <Widget>[
+                IconButton(
+                    icon: Icon(Icons.close),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    }),
+                TextField(
+                  controller: _username,
+                  onChanged: (value) {},
+                  onSubmitted: (value) {},
+                  onTap: () {},
+                  decoration: InputDecoration(
+                    hintText: "User Name",
+                  ),
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                TextField(
+                  controller: _rolename,
+                  onChanged: (value) {},
+                  onSubmitted: (value) {},
+                  onTap: () {},
+                  decoration: InputDecoration(
+                    hintText: "Role Name",
+                  ),
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                RaisedButton(
+                  onPressed: () {
+                    FutureBuilder(
+                      future: postBelongsTo(
+                          _username.text, id, "999", _rolename.text),
+                      builder: (BuildContext context, AsyncSnapshot snapshot) {
+                        if (snapshot.data == false) {
+                          print(false);
+                          print("Not executed Query");
+                          CircularProgressIndicator();
+                        } else {
+                          print(true);
+                          print("Executed query");
+                          return Text("true");
+                        }
+                      },
+                    );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => AddMember()),
+                    );
+                  },
+                  child: Text("Add user"),
+                )
+              ],
+            ),
+          ),
+        );
+      });
+}
+
+class WhiteBG extends StatefulWidget {
   final OrganizationClass org_info;
 
   const WhiteBG({
@@ -38,10 +252,28 @@ class WhiteBG extends StatelessWidget {
   final Size size;
 
   @override
+  _WhiteBGState createState() => _WhiteBGState();
+}
+
+class _WhiteBGState extends State<WhiteBG> {
+  @override
   Widget build(BuildContext context) {
+    print(widget.org_info.permission);
+    if (widget.org_info.permission == true) {
+      if (widget.org_info.org_id == "007") {
+        _name.text = "Name";
+        _desp.text = "description";
+      }
+      print(
+          "SkjnFKNEKSDJGkje ksJDBHVtiufbwyaejnvtkubyeruhdjgbviueisntoihbtiawjenjvogniaejgo\nwakekwanheknhtw\nwsjkhknkjbthibuhsng");
+    } else if (widget.org_info.permission == false) {
+      _name.text = widget.org_info.org_name;
+      _desp.text = widget.org_info.description;
+      print("wlse if of second");
+    }
     return Container(
       width: double.infinity,
-      height: size.height * 0.25,
+      height: widget.size.height * 0.25,
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(bottomLeft: Radius.circular(105))),
@@ -52,7 +284,8 @@ class WhiteBG extends StatelessWidget {
             Container(
                 //decoration: BoxDecoration(color: Colors.pink),
                 padding: EdgeInsets.only(
-                    left: size.width * 0.12, top: size.height * 0.03),
+                    left: widget.size.width * 0.12,
+                    top: widget.size.height * 0.03),
                 child: CircleAvatar(
                   child: Padding(
                     padding: const EdgeInsets.only(right: 18.0, bottom: 18),
@@ -69,38 +302,89 @@ class WhiteBG extends StatelessWidget {
                 )),
             Container(
                 padding: EdgeInsets.only(
-                    top: constPadding * 4, left: constPadding / 2),
+                    top: constPadding * ((widget.org_info.permission) ? 3 : 4),
+                    left: constPadding / 2),
                 //decoration: BoxDecoration(color: Colors.blue),
-                alignment: Alignment.center,
+                alignment: Alignment.topCenter,
                 child: Center(
-                  child: Column(
-                    children: <Widget>[
-                      Container(
-                        width: 180,
-                        //decoration: BoxDecoration(color: Colors.pink),
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          org_info.org_name.toUpperCase(),
-                          style: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 8.0),
-                        child: Container(
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 30),
+                    child: Column(
+                      children: <Widget>[
+                        Container(
                           width: 180,
-                          padding: EdgeInsets.only(top: constPadding / 4),
-                          alignment: Alignment.topLeft,
-                          //decoration: BoxDecoration(color: Colors.red),
-                          child: Text(
-                            org_info.description,
-                            style: TextStyle(color: Colors.grey),
-                          ),
+                          //decoration: BoxDecoration(color: Colors.pink),
+                          alignment: Alignment.bottomLeft,
+                          // child: Text(
+                          //   org_info.org_name.toUpperCase(),
+                          //   style: TextStyle(
+                          //     fontSize: 25,
+                          //     fontWeight: FontWeight.bold,
+                          //   ),
+                          // ),
+                          child: (widget.org_info.permission)
+                              ? TextField(
+                                  controller: _name,
+                                  onChanged: (value) {
+                                    print(value);
+                                    widget.org_info.org_id = "006";
+                                  },
+                                  onSubmitted: (value) {
+                                    print("submited vaklue " + value);
+                                    _name.text = value;
+                                    widget.org_info.org_id = "006";
+                                    setState(() {});
+                                  },
+                                  onTap: () {},
+                                  decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.only(
+                                          top: -5, left: -2, bottom: -25),
+                                      border: InputBorder.none,
+                                      hintText: "Enter name",
+                                      fillColor: Colors.red),
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                )
+                              : Text(
+                                  widget.org_info.org_name,
+                                  style: TextStyle(
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
                         ),
-                      )
-                    ],
+                        Padding(
+                          padding: const EdgeInsets.only(left: 8.0),
+                          child: Container(
+                            width: 180,
+                            padding: EdgeInsets.only(top: constPadding / 4),
+                            alignment: Alignment.topLeft,
+                            //decoration: BoxDecoration(color: Colors.red),
+                            // child: Text(
+                            //   org_info.description,
+                            //   style: TextStyle(color: Colors.grey),
+                            // ),
+                            child: (widget.org_info.permission)
+                                ? TextField(
+                                    controller: _desp,
+                                    decoration: InputDecoration(
+                                        contentPadding:
+                                            EdgeInsets.only(top: -25, left: -2),
+                                        border: InputBorder.none,
+                                        hintText: "Enter description"),
+                                    style: TextStyle(color: Colors.grey),
+                                  )
+                                : Text(
+                                    widget.org_info.description,
+                                    style: TextStyle(color: Colors.grey),
+                                  ),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ))
           ],
@@ -108,9 +392,18 @@ class WhiteBG extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+
+    super.dispose();
+    //_name.dispose();
+    //_desp.dispose();
+  }
 }
 
-class LightPurpleBG extends StatelessWidget {
+class LightPurpleBG extends StatefulWidget {
   const LightPurpleBG({
     Key key,
     @required this.size,
@@ -119,10 +412,15 @@ class LightPurpleBG extends StatelessWidget {
   final Size size;
 
   @override
+  _LightPurpleBGState createState() => _LightPurpleBGState();
+}
+
+class _LightPurpleBGState extends State<LightPurpleBG> {
+  @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: size.height * 0.39,
+      height: widget.size.height * 0.39,
       decoration: BoxDecoration(
           color: Color(0xff8A56AC),
           borderRadius: BorderRadius.only(bottomLeft: Radius.circular(100))),
@@ -146,8 +444,10 @@ class LightPurpleBG extends StatelessWidget {
                           fontSize: 45,
                           fontWeight: FontWeight.bold),
                     ),
-                    Text("Teammates",
-                        style: TextStyle(color: Colors.white, fontSize: 10)),
+                    Text(
+                      "Teammates",
+                      style: TextStyle(color: Colors.white, fontSize: 10),
+                    ),
                   ],
                 ),
               ),
@@ -159,7 +459,9 @@ class LightPurpleBG extends StatelessWidget {
                     width: constPadding * 10,
                     height: constPadding * 3,
                     child: RaisedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        _editbottommodalsheet(context, Universal_id);
+                      },
                       elevation: 10,
                       color: Colors.white,
                       colorBrightness: Brightness.light,

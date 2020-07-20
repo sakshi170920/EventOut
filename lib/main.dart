@@ -14,9 +14,9 @@ void main() async {
   bool logged = await getLoginStatus();
 
   final MyApp myApp = MyApp(
-    initialRoute: logged ? MainBody.id : LoginSignUp.id,
+      //initialRoute: logged ? MainBody.id : LoginSignUp.id,
 
-  );
+      );
   runApp(myApp);
 }
 
@@ -38,11 +38,11 @@ class MyApp extends StatelessWidget {
         ContactList.id: (context) => ContactList(),
         EventList.id: (context) => EventList(),
         ClubList.id: (context) => ClubList(),
-        MainBody.id: (context) => MainBody(),
-        TaskHandler.id : (context) => TaskHandler(),
+        //MainBody.id: (context) => MainBody(),
+        TaskHandler.id: (context) => TaskHandler(),
       },
-      initialRoute: initialRoute,
-      //home: ListJunior(),
+      //initialRoute: initialRoute,
+      home: MainBody(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         backgroundColor: const Color(0xff101010),

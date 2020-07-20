@@ -2,7 +2,8 @@ import 'dart:async';
 import 'dart:ui';
 import 'package:EventOut/Chat/DatabaseMethods.dart';
 import 'package:EventOut/NavigationMethods.dart';
-import 'file:///C:/Users/ASUS/AndroidStudioProjects/flutter_app1/EventOut/lib/TaskScreens/CustomAppBar.dart';
+import 'package:EventOut/TaskScreens/CustomAppBar.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -12,18 +13,18 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
 
 String userEmail = '';
+
 class ChatRoom extends StatefulWidget {
   static const String id = "ChatRoom";
   final DatabaseMethods databaseMethods = DatabaseMethods();
   @override
-  _ChatRoomState createState( ) => _ChatRoomState();
+  _ChatRoomState createState() => _ChatRoomState();
 }
 
 class _ChatRoomState extends State<ChatRoom> {
-
   final messageTextController = TextEditingController();
   String messageText;
-  ChatType type ;
+  ChatType type;
   String groupId;
   String subGroupId;
   ScrollController controller = ScrollController();
@@ -33,27 +34,22 @@ class _ChatRoomState extends State<ChatRoom> {
     super.initState();
     getCurrentUser();
   }
-  void getGroupIds (String group , String subGroupId , ChatType type)
-  {
+
+  void getGroupIds(String group, String subGroupId, ChatType type) {
     this.type = type;
-    if (type == ChatType.INDIVIDUAL)
-    {
-      if(userEmail.hashCode >= group.hashCode)
+    if (type == ChatType.INDIVIDUAL) {
+      if (userEmail.hashCode >= group.hashCode)
         this.groupId = '$group-$userEmail';
       else
         this.groupId = '$userEmail-$group';
-
     }
   }
-
 
   void getCurrentUser() async {
     try {
       userEmail = await getEmail();
       print(userEmail);
-      if (userEmail != null) {
-
-      }
+      if (userEmail != null) {}
     } catch (e) {
       print(e);
     }
@@ -62,7 +58,7 @@ class _ChatRoomState extends State<ChatRoom> {
   @override
   Widget build(BuildContext context) {
     final ChatRoomArguments args = ModalRoute.of(context).settings.arguments;
-    getGroupIds(args.group , args.subGroupId , args.type);
+    getGroupIds(args.group, args.subGroupId, args.type);
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -70,15 +66,16 @@ class _ChatRoomState extends State<ChatRoom> {
           child: Column(
             children: <Widget>[
               Expanded(
-                flex: 2,
-                  child: CustomAppBar('EO Chat' , Alignment.centerLeft)),
+                  flex: 2,
+                  child: CustomAppBar('EO Chat', Alignment.centerLeft)),
               Expanded(
                 flex: 15,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
-                    MessagesStream(type , groupId , subGroupId , widget.databaseMethods , controller ),
+                    MessagesStream(type, groupId, subGroupId,
+                        widget.databaseMethods, controller),
                     Container(
                       decoration: kMessageContainerDecoration,
                       child: Row(
@@ -86,7 +83,6 @@ class _ChatRoomState extends State<ChatRoom> {
                         children: <Widget>[
                           Expanded(
                             child: Container(
-
                               child: TextField(
                                 controller: messageTextController,
                                 cursorColor: Colors.white,
@@ -101,14 +97,22 @@ class _ChatRoomState extends State<ChatRoom> {
                             onTap: () {
                               messageTextController.clear();
 
-                              widget.databaseMethods.addMessage(groupId, subGroupId, messageText, userEmail , Timestamp.now());
+                              widget.databaseMethods.addMessage(
+                                  groupId,
+                                  subGroupId,
+                                  messageText,
+                                  userEmail,
+                                  Timestamp.now());
 
-                              Timer(Duration(milliseconds: 500),
-                                      () => controller.jumpTo(controller.position.minScrollExtent));
+                              Timer(
+                                  Duration(milliseconds: 500),
+                                  () => controller.jumpTo(
+                                      controller.position.minScrollExtent));
                             },
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 0,horizontal: 20),
-                              child: Icon(Icons.send,color: LightGrey),
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 0, horizontal: 20),
+                              child: Icon(Icons.send, color: LightGrey),
                             ),
                           ),
                         ],
@@ -126,15 +130,15 @@ class _ChatRoomState extends State<ChatRoom> {
 }
 
 class MessagesStream extends StatelessWidget {
-  final ChatType type ;
+  final ChatType type;
   final String groupId;
   final String subGroupId;
   final DatabaseMethods _databaseMethods;
   final ScrollController _controller;
-  MessagesStream(this.type , this.groupId , this.subGroupId ,this._databaseMethods ,this._controller);
+  MessagesStream(this.type, this.groupId, this.subGroupId,
+      this._databaseMethods, this._controller);
   @override
   Widget build(BuildContext context) {
-
     return StreamBuilder<QuerySnapshot>(
       stream: _databaseMethods.getChatRoomMessages(groupId, subGroupId),
       builder: (context, snapshot) {
@@ -150,7 +154,6 @@ class MessagesStream extends StatelessWidget {
         for (var message in messages) {
           final messageText = message.data['text'];
           final messageSender = message.data['sender'];
-
 
           final messageBubble = MessageBubble(
             sender: messageSender,
@@ -183,58 +186,57 @@ class MessageBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
-        margin:  EdgeInsets.symmetric(vertical: 10) ,
-        child: Column(
-          crossAxisAlignment:
-          isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
-          children: <Widget>[
-            Row(
-                mainAxisAlignment: isMe ? MainAxisAlignment.end : MainAxisAlignment.start,
-                children: isMe ? <Widget>[
-                  UserName(sender: sender),
-                  UserProfile(),
-                ] :
-                <Widget>[
-                  UserProfile(),
-                UserName(sender: sender),
-          ],
-
-            ),
-            Container(
-              width: 300,
-              decoration: BoxDecoration(borderRadius:isMe
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 10),
+      child: Column(
+        crossAxisAlignment:
+            isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+        children: <Widget>[
+          Row(
+            mainAxisAlignment:
+                isMe ? MainAxisAlignment.end : MainAxisAlignment.start,
+            children: isMe
+                ? <Widget>[
+                    UserName(sender: sender),
+                    UserProfile(),
+                  ]
+                : <Widget>[
+                    UserProfile(),
+                    UserName(sender: sender),
+                  ],
+          ),
+          Container(
+            width: 300,
+            decoration: BoxDecoration(
+              borderRadius: isMe
                   ? BorderRadius.only(
-                topLeft: Radius.circular(30.0),
-                bottomLeft: Radius.circular(30.0),
-              )
+                      topLeft: Radius.circular(30.0),
+                      bottomLeft: Radius.circular(30.0),
+                    )
                   : BorderRadius.only(
-                bottomRight: Radius.circular(30.0),
-                topRight: Radius.circular(30.0),
-              ),
-                color: isMe ? Lavender :  Purple,
-
-              ),
-              child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                child: Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: Text(
-                    text,
-                    style: TextStyle(
-                      color:LightGrey,
-                      fontSize: 15,
-
+                      bottomRight: Radius.circular(30.0),
+                      topRight: Radius.circular(30.0),
                     ),
-                    textAlign: TextAlign.start,
+              color: isMe ? Lavender : Purple,
+            ),
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+              child: Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: Text(
+                  text,
+                  style: TextStyle(
+                    color: LightGrey,
+                    fontSize: 15,
                   ),
+                  textAlign: TextAlign.start,
                 ),
               ),
             ),
-          ],
-        ),
-      );
-
+          ),
+        ],
+      ),
+    );
   }
 }
 
@@ -247,8 +249,7 @@ class UserProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: CircleAvatar(
-      ),
+      child: CircleAvatar(),
     );
   }
 }

@@ -61,7 +61,6 @@ class _LoginState extends State<Login> {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Column(
-
                           children: <Widget>[
                             SizedBox(
                               width: double.infinity,
@@ -170,7 +169,6 @@ class _LoginState extends State<Login> {
                             Expanded(
                               flex: 3,
                               child: Container(
-
                                 margin: EdgeInsets.symmetric(
                                     horizontal: 80, vertical: 10),
                                 decoration: BoxDecoration(
@@ -186,25 +184,28 @@ class _LoginState extends State<Login> {
                                         spinner = true;
                                       });
                                       try {
-                                        validLogin =
-                                        await LoginDetails.isValidLoginEmail(
-                                            email, password);
+                                        validLogin = await LoginDetails
+                                            .isValidLoginEmail(email, password);
                                         print(validLogin);
                                         if (validLogin == false)
                                           throw Exception;
                                         else {
                                           setEmail(email);
                                           await setLoginStatus(true);
-                                          navigateToMainBody(context);
+                                          //navigateToMainBody(context);
                                         }
                                       } catch (e) {
                                         print('invalid user');
-                                        showDialog(context: context,
-                                        builder: (BuildContext context) => CustomDialog(
-                                          title: 'Login Failed',
-                                          description: "Your email and password don't match.Try Again!",
-                                          buttonText: 'Close',
-                                        ),);
+                                        showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) =>
+                                              CustomDialog(
+                                            title: 'Login Failed',
+                                            description:
+                                                "Your email and password don't match.Try Again!",
+                                            buttonText: 'Close',
+                                          ),
+                                        );
                                       }
                                       setState(() {
                                         spinner = false;

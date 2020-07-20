@@ -1,7 +1,7 @@
+import 'package:EventOut/TaskScreens/task_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:EventOut/TaskScreens/task_data.dart';
 import 'package:provider/provider.dart';
-import 'file:///C:/Users/ASUS/AndroidStudioProjects/flutter_app1/EventOut/lib/TaskScreens/task_tile.dart';
 
 class TasksList extends StatelessWidget {
   @override

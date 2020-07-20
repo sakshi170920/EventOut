@@ -8,19 +8,25 @@ const String basic_url = 'https://eventzy123.000webhostapp.com';
 
 class OrganizartionCard extends StatelessWidget {
   final String org_id, org_name, description, owner;
+  final bool permission;
 
   const OrganizartionCard({
     this.org_id,
     this.org_name,
     this.description,
     this.owner,
+    this.permission,
   });
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     OrganizationClass temp = new OrganizationClass(
-        this.org_id, this.org_name.toUpperCase(), this.description, this.owner);
+        this.org_id,
+        this.org_name.toUpperCase(),
+        this.description,
+        this.owner,
+        this.permission);
     return Container(
       height: 130,
       margin: EdgeInsets.symmetric(

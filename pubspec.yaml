@@ -34,9 +34,9 @@ dependencies:
   image_picker: ^0.6.7+2
   fluttertoast: ^4.0.1
   intl: ^0.16.1
-  flutter_launcher_icons: ^0.7.
+#  flutter_launcher_icons: ^0.7.
   table_calendar: ^2.2.3
-  flutter_svg: ^0.18.0
+#  flutter_svg: ^0.18.0
   roundcheckbox: ^1.0.0
 
   # The following adds the Cupertino Icons font to your application.
@@ -66,6 +66,7 @@ flutter:
   assets:
     - assets/
   #   - images/a_dot_ham.jpeg
+    - assets/images/back.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -87,7 +88,7 @@ flutter:
         - asset: assets/fonts/Helvetica.ttf
     - family: SegoeUI-Bold
       fonts:
-        - asset: fonts/segoe-ui-bold.ttf
+#       - asset: fonts/segoe-ui-bold.ttf
 #        - asset: fonts/TrajanPro_Bold.ttf
 #          weight: 700
 #  #
