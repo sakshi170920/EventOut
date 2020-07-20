@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class OrganizationClass {
-  String description, org_name, owner;
-  String org_id;
+  String description, orgName, owner;
+  String orgId;
   bool permission = false;
-  OrganizationClass(this.org_id, this.org_name, this.description, this.owner,
+  OrganizationClass(this.orgId, this.orgName, this.description, this.owner,
       this.permission);
 }

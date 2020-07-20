@@ -1,3 +1,5 @@
+import 'package:EventOut/MainPage/OrganizationClass.dart';
+import 'package:EventOut/OrganizationPage/OrganizationPageMainBody.dart';
 import 'package:flutter/material.dart';
 import 'package:EventOut/login_screens/ProfileCompleter.dart';
 import 'package:EventOut/login_screens/googleoremail.dart';
@@ -19,15 +21,19 @@ Future navigateToContactList(context) async {
   Navigator.pushNamed(context, ContactList.id);
 }
 
-// Future navigateToMainBody(context ) async {
-//   Navigator.pushNamed(context, MainBody.id );
-// }
+ Future navigateToMainBody(context ) async {
+   Navigator.pushNamed(context, MainBody.id );
+ }
 Future navigateToGoogleorEmail(context) async {
   Navigator.pushNamed(context, Googleoremail.id);
 }
 
 Future navigateToLogin(context) async {
   Navigator.pushNamed(context, Login.id);
+}
+Future navigationToOrganizationPageMainBody(context , OrganizationClass temp) async {
+  Navigator.pushNamed( context , OrganizationPageMainBody.id,arguments: temp,
+  );
 }
 
 Future navigateToChatRoom(

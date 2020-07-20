@@ -13,6 +13,7 @@ class _OrganizationInnerListViewState extends State<OrganizationInnerListView> {
     double x = 5;
     return Container(
       height: 100 + (x - 1) * 40,
+      padding: EdgeInsets.only(top: 30),
       //decoration: BoxDecoration(color: Colors.red),
       child: Column(
         children: <Widget>[

@@ -8,6 +8,7 @@ import 'package:EventOut/login_screens/ProfileCompleter.dart';
 import 'MainPage/MainBody.dart';
 import 'package:EventOut/Chat/ContactList.dart';
 import 'SharedPreferencesMethods.dart';
+import 'package:EventOut/OrganizationPage/OrganizationPageMainBody.dart';
 import 'NavigationMethods.dart';
 //import 'demo2.dart';
 
@@ -16,8 +17,7 @@ void main() async {
   bool logged = await getLoginStatus();
 
   final MyApp myApp = MyApp(
-      //initialRoute: logged ? MainBody.id : LoginSignUp.id,
-
+      initialRoute: logged ? MainBody.id : LoginSignUp.id,
       );
   runApp(myApp);
 }
@@ -40,14 +40,13 @@ class MyApp extends StatelessWidget {
         ContactList.id: (context) => ContactList(),
         EventList.id: (context) => EventList(),
         ClubList.id: (context) => ClubList(),
-        //MainBody.id: (context) => MainBody(),
         TaskHandler.id: (context) => TaskHandler(),
-
-        //MainBody.id: (context) => MainBody(),
+        MainBody.id: (context) => MainBody(),
         TaskHandler.id: (context) => TaskHandler(),
+        OrganizationPageMainBody.id : (context)=> OrganizationPageMainBody(),
         //Bringingguests2.id: (context) => Bringingguests2(),
       },
-      //initialRoute: initialRoute,
+
       home: MainBody(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

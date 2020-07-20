@@ -1,20 +1,15 @@
-import 'package:EventOut/OrganizationPage.dart/OrganizationPageMainBody.dart';
 import 'package:EventOut/constants/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-
 import 'package:http/http.dart' as http;
-
 import 'dart:convert';
-
 import 'MainBottomPart.dart';
 import 'OrganizationCard.dart';
 import 'OrganizationClass.dart';
-
+import 'package:EventOut/NavigationMethods.dart';
 List<OrganizationClass> us = [];
-
 class MainBody extends StatefulWidget {
+  static String id = 'MainBody';
   @override
   _MainBodyState createState() => _MainBodyState();
 }
@@ -56,11 +51,11 @@ class _MainBodyState extends State<MainBody> {
                       } else {
                         return ListView.builder(
                           itemCount: snapshot.data.length,
-                          itemBuilder: (BuildContext contxt, int index) {
+                          itemBuilder: (BuildContext context, int index) {
                             print("listview on ground");
-                            return OrganizartionCard(
-                              org_id: snapshot.data[index].org_id,
-                              org_name: snapshot.data[index].org_name,
+                            return OrganizationCard(
+                              orgId: snapshot.data[index].orgId,
+                              orgName: snapshot.data[index].orgName,
                               description: snapshot.data[index].description,
                               owner: snapshot.data[index].owner,
                               permission: false,
@@ -79,13 +74,7 @@ class _MainBodyState extends State<MainBody> {
         onPressed: () {
           OrganizationClass temp = new OrganizationClass(
               "007", "Name ", "Your description", "you ", true);
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => OrganizationPageMainBody(),
-              settings: RouteSettings(arguments: temp),
-            ),
-          );
+          navigationToOrganizationPageMainBody(context, temp);
         },
         elevation: 25,
         splashColor: Color(0XFF8A56AC),

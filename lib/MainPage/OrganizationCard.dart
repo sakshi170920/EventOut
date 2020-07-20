@@ -1,41 +1,40 @@
-import 'package:flutter/material.dart';
-import 'package:EventOut/MainPage/OrganizationClass.dart';
-import 'package:EventOut/constants/constants.dart';
 import 'package:EventOut/NavigationMethods.dart';
+import 'package:EventOut/constants/constants.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 import 'OrganizationClass.dart';
 
 const String basic_url = 'https://eventzy123.000webhostapp.com';
 
-class OrganizartionCard extends StatelessWidget {
-  final String org_id, org_name, description, owner;
+class OrganizationCard extends StatelessWidget {
+  final String orgId, orgName, description, owner;
   final bool permission;
 
-  const OrganizartionCard({
-    this.org_id,
-    this.org_name,
+  const OrganizationCard({
+    this.orgId,
+    this.orgName,
     this.description,
     this.owner,
     this.permission,
+
   });
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     OrganizationClass temp = new OrganizationClass(
-        this.org_id,
-        this.org_name.toUpperCase(),
-        this.description,
-        this.owner,
-        this.permission);
+        this.orgId, this.orgName.toUpperCase(), this.description, this.owner,this.permission);
     return Container(
       height: 130,
       margin: EdgeInsets.symmetric(
           horizontal: constPadding * 1.8, vertical: constPadding / 2),
       //color: Colors.blueAccent,
       decoration: BoxDecoration(
-          //color: Colors.blueAccent,
-          ),
+        color: Color(0XFF8A56AC).withOpacity(0.4),
+        boxShadow: [constShadow],
+        borderRadius: BorderRadius.circular(constPadding * 2.5),
+      ),
       child: Stack(
         alignment: Alignment.bottomCenter,
         children: <Widget>[
@@ -54,14 +53,24 @@ class OrganizartionCard extends StatelessWidget {
                 children: <Widget>[
                   Expanded(
                     flex: 2,
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                          top: constPadding / 2, right: constPadding * 3),
-                      child: Text(
-                        "TedX Vit Pune,India.",
-                        textAlign: TextAlign.right,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 16),
+                    child: Container(
+                      width: 200,
+//                    decoration: BoxDecoration(color: Colors.red),
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            top: constPadding, right: constPadding),
+                        child: GestureDetector(
+                          onTap: () {
+                            navigationToOrganizationPageMainBody(context, temp);
+
+                          },
+                          child: Text(
+                            orgName.toUpperCase(),
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 16),
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -76,109 +85,124 @@ class OrganizartionCard extends StatelessWidget {
                     ),
                   ),
                   Expanded(
-                    flex: 4,
+                    flex: 3,
                     child: Padding(
                       padding: const EdgeInsets.only(
-                        left: constPadding,
-                        top: constPadding / 2,
-                        bottom: constPadding / 2,
-                      ),
+                          left: constPadding, top: constPadding / 4),
                       child: Row(
-                        //ROw
+                        //ROW
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
+                          //ROW of Assigning work - icon + column
                           Expanded(
-                            flex: 2,
-                            child: Container(
-                              //decoration: BoxDecoration(color: Colors.blue),
-                              child: IconButton(
-                                  icon: Icon(Icons.assignment_return),
-                                  color: Colors.purple,
-                                  autofocus: true,
-                                  highlightColor: Colors.red,
-                                  iconSize: 30,
-                                  onPressed: () {}),
-                            ),
-                          ),
-                          Expanded(
-                            flex: 3,
-                            child: Container(
-                              width: 80,
-                              //decoration: BoxDecoration(color: Colors.green),
-                              child: Align(
-                                alignment: Alignment.centerLeft,
-                                child: Column(
-                                  children: <Widget>[
-                                    Expanded(
-                                      child: Container(
-                                        decoration:
-                                            BoxDecoration(color: Colors.white),
-                                        //padding: const EdgeInsets.only(right: 20),
-                                        child: Text(
-                                          "Assign Work",
-                                        ),
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: Container(
-                                        //decoration: BoxDecoration(color: Colors.pink),
-                                        padding: const EdgeInsets.only(
-                                            right: constPadding * 0.75),
-                                        child: Text(
-                                          '21 assigned',
-                                          style: TextStyle(
-                                              fontSize: 11, color: Colors.grey),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                            child: Row(
+
+                              children: [
+                                Expanded(
+                              flex: 2,
+                              child: Container(
+                                //decoration: BoxDecoration(color: Colors.blue),
+                                child: IconButton(
+                                    icon: Icon(Icons.assignment_return),
+                                    color: Colors.purple,
+                                    autofocus: true,
+                                    highlightColor: Colors.red,
+                                    iconSize: 30,
+                                    onPressed: () {}),
                               ),
                             ),
-                          ),
-                          Expanded(
-                            flex: 2,
-                            child: Container(
-
-                                //decoration: BoxDecoration(color: Colors.blue),
-                                margin: EdgeInsets.only(right: 1),
-                                child: Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: IconButton(
-                                      icon: Icon(Icons.chat), onPressed: () {}),
-                                )),
-                          ),
-                          Expanded(
-                            flex: 3,
-                            child: Container(
-                              //decoration: BoxDecoration(color: Colors.deepOrange),
-                              child: Align(
-                                alignment: Alignment.centerLeft,
-                                child: GestureDetector(
-                                  onTap: () {
-                                    navigateToContactList(context);
-                                  },
-                                  child: Column(
-                                    children: <Widget>[
-                                      Container(
-                                        padding: EdgeInsets.only(
-                                            right: constPadding + 10),
-                                        //decoration:BoxDecoration(color: Colors.brown),
-                                        child: Text(
-                                          "Chat",
+                              Expanded(
+                                flex: 3,
+                                child: Container(
+                                  width: 80,
+                                  child: Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Column(
+                                      children: <Widget>[
+                                        Expanded(
+                                          child: Container(
+                                            decoration:
+                                            BoxDecoration(color: Colors.white),
+                                            //padding: const EdgeInsets.only(right: 20),
+                                            child: Text(
+                                              "Assign Work",
+                                            ),
+                                          ),
                                         ),
-                                      ),
-                                      Container(
-                                        padding: EdgeInsets.only(
-                                            right: constPadding / 4),
-                                        child: Text(
-                                          "12 Unread",
-                                          style: TextStyle(
-                                              fontSize: 11, color: Colors.grey),
+                                        Expanded(
+                                          child: Container(
+                                            //decoration: BoxDecoration(color: Colors.pink),
+                                            padding: const EdgeInsets.only(
+                                                right: constPadding * 0.75),
+                                            child: Text(
+                                              '21 assigned',
+                                              style: TextStyle(
+                                                  fontSize: 11, color: Colors.grey),
+                                            ),
+                                          ),
                                         ),
-                                      )
-                                    ],
+                                      ],
+                                    ),
                                   ),
+                                ),
+                              ),
+                            ],
+                            ),
+                          ),
+                          //ROW of Chat - icon + column
+                          Expanded(
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: GestureDetector(
+                                onTap: (){
+                                  navigateToContactList( context );
+                                },
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                      flex: 2,
+                                  child: Container(
+                                    //decoration: BoxDecoration(color: Colors.blue),
+                                      child: IconButton(
+                                          icon: Icon(Icons.chat),
+                                          onPressed: () {
+
+                                          },
+                                          ),
+                                  ),
+                                ),
+                                  Expanded(
+                                    flex: 3,
+                                    child: Container(
+                                      child: Column(
+
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Expanded(
+                                            child: Container(
+                                              padding:
+                                              EdgeInsets.only(right: constPadding + 10),
+                                              //decoration:BoxDecoration(color: Colors.brown),
+                                              child: Text(
+                                                "Chat",
+                                              ),
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: Container(
+                                              padding: EdgeInsets.only(right: constPadding / 4),
+                                              child: Text(
+                                                "12 Unread",
+                                                style: TextStyle(
+                                                    fontSize: 11, color: Colors.grey),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
                                 ),
                               ),
                             ),
