@@ -8,8 +8,8 @@ import 'package:EventOut/login_screens/ProfileCompleter.dart';
 import 'MainPage/MainBody.dart';
 import 'package:EventOut/Chat/ContactList.dart';
 import 'SharedPreferencesMethods.dart';
-import 'demo2.dart';
-
+import 'NavigationMethods.dart';
+//import 'demo2.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,14 +40,12 @@ class MyApp extends StatelessWidget {
         ContactList.id: (context) => ContactList(),
         EventList.id: (context) => EventList(),
         ClubList.id: (context) => ClubList(),
-<<<<<<< HEAD
         //MainBody.id: (context) => MainBody(),
         TaskHandler.id: (context) => TaskHandler(),
-=======
-        MainBody.id: (context) => MainBody(),
-        TaskHandler.id : (context) => TaskHandler(),
-        Bringingguests2.id : (context) => Bringingguests2(),
->>>>>>> 3754acf4b119421e42d45c5049a045d0f56113c2
+
+        //MainBody.id: (context) => MainBody(),
+        TaskHandler.id: (context) => TaskHandler(),
+        //Bringingguests2.id: (context) => Bringingguests2(),
       },
       //initialRoute: initialRoute,
       home: MainBody(),

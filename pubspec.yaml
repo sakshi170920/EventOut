@@ -34,11 +34,7 @@ dependencies:
   image_picker: ^0.6.7+2
   fluttertoast: ^4.0.1
   intl: ^0.16.1
-<<<<<<< HEAD
 #  flutter_launcher_icons: ^0.7.
-=======
-  flutter_launcher_icons: ^0.7.5
->>>>>>> 3754acf4b119421e42d45c5049a045d0f56113c2
   table_calendar: ^2.2.3
 #  flutter_svg: ^0.18.0
   roundcheckbox: ^1.0.0
@@ -92,11 +88,7 @@ flutter:
         - asset: assets/fonts/Helvetica.ttf
     - family: SegoeUI-Bold
       fonts:
-<<<<<<< HEAD
 #       - asset: fonts/segoe-ui-bold.ttf
-=======
-        - asset: assets/fonts/segoe-ui-bold.ttf
->>>>>>> 3754acf4b119421e42d45c5049a045d0f56113c2
 #        - asset: fonts/TrajanPro_Bold.ttf
 #          weight: 700
 #  #

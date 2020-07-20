@@ -3,7 +3,6 @@ import 'package:EventOut/MainPage/OrganizationClass.dart';
 import 'package:EventOut/constants/constants.dart';
 import 'package:EventOut/NavigationMethods.dart';
 
-<<<<<<< HEAD
 import 'OrganizationClass.dart';
 
 const String basic_url = 'https://eventzy123.000webhostapp.com';
@@ -19,30 +18,16 @@ class OrganizartionCard extends StatelessWidget {
     this.owner,
     this.permission,
   });
-=======
-class OrganizationCard extends StatelessWidget {
-  const OrganizationCard({
-    Key key,
-    this.itemIndex,
-    this.og,
-  }) : super(key: key);
-
-  final int itemIndex;
-  final OrganizationClass og;
->>>>>>> 3754acf4b119421e42d45c5049a045d0f56113c2
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-<<<<<<< HEAD
     OrganizationClass temp = new OrganizationClass(
         this.org_id,
         this.org_name.toUpperCase(),
         this.description,
         this.owner,
         this.permission);
-=======
->>>>>>> 3754acf4b119421e42d45c5049a045d0f56113c2
     return Container(
       height: 130,
       margin: EdgeInsets.symmetric(
@@ -75,35 +60,36 @@ class OrganizationCard extends StatelessWidget {
                       child: Text(
                         "TedX Vit Pune,India.",
                         textAlign: TextAlign.right,
-                        style:
-                            TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16),
                       ),
                     ),
                   ),
                   Expanded(
                     flex: 1,
                     child: Divider(
-                    color: Colors.grey.withOpacity(0.6),
-                    thickness: 2,
-                    indent: 40,
-                    endIndent: 70,
-                    height: 15,
-                  ),),
+                      color: Colors.grey.withOpacity(0.6),
+                      thickness: 2,
+                      indent: 40,
+                      endIndent: 70,
+                      height: 15,
+                    ),
+                  ),
                   Expanded(
                     flex: 4,
                     child: Padding(
                       padding: const EdgeInsets.only(
-                          left: constPadding, top: constPadding / 2,
-                        bottom: constPadding/2,
+                        left: constPadding,
+                        top: constPadding / 2,
+                        bottom: constPadding / 2,
                       ),
                       child: Row(
                         //ROw
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
                           Expanded(
-                            flex:2,
+                            flex: 2,
                             child: Container(
-
                               //decoration: BoxDecoration(color: Colors.blue),
                               child: IconButton(
                                   icon: Icon(Icons.assignment_return),
@@ -123,14 +109,16 @@ class OrganizationCard extends StatelessWidget {
                                 alignment: Alignment.centerLeft,
                                 child: Column(
                                   children: <Widget>[
-                                    Expanded(child: Container(
-                                      decoration:
-                                          BoxDecoration(color: Colors.white),
-                                      //padding: const EdgeInsets.only(right: 20),
-                                      child: Text(
-                                        "Assign Work",
+                                    Expanded(
+                                      child: Container(
+                                        decoration:
+                                            BoxDecoration(color: Colors.white),
+                                        //padding: const EdgeInsets.only(right: 20),
+                                        child: Text(
+                                          "Assign Work",
+                                        ),
                                       ),
-                                    ),),
+                                    ),
                                     Expanded(
                                       child: Container(
                                         //decoration: BoxDecoration(color: Colors.pink),
@@ -163,37 +151,38 @@ class OrganizationCard extends StatelessWidget {
                           Expanded(
                             flex: 3,
                             child: Container(
-                            //decoration: BoxDecoration(color: Colors.deepOrange),
-                            child: Align(
-                              alignment: Alignment.centerLeft,
-                              child: GestureDetector(
-                                onTap: (){
-                                  navigateToContactList(context);
-                                },
-                                child: Column(
-                                  children: <Widget>[
-                                    Container(
-                                      padding:
-                                          EdgeInsets.only(right: constPadding + 10),
-                                      //decoration:BoxDecoration(color: Colors.brown),
-                                      child: Text(
-                                        "Chat",
+                              //decoration: BoxDecoration(color: Colors.deepOrange),
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    navigateToContactList(context);
+                                  },
+                                  child: Column(
+                                    children: <Widget>[
+                                      Container(
+                                        padding: EdgeInsets.only(
+                                            right: constPadding + 10),
+                                        //decoration:BoxDecoration(color: Colors.brown),
+                                        child: Text(
+                                          "Chat",
+                                        ),
                                       ),
-                                    ),
-                                    Container(
-                                      padding:
-                                          EdgeInsets.only(right: constPadding / 4),
-                                      child: Text(
-                                        "12 Unread",
-                                        style: TextStyle(
-                                            fontSize: 11, color: Colors.grey),
-                                      ),
-                                    )
-                                  ],
+                                      Container(
+                                        padding: EdgeInsets.only(
+                                            right: constPadding / 4),
+                                        child: Text(
+                                          "12 Unread",
+                                          style: TextStyle(
+                                              fontSize: 11, color: Colors.grey),
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
-                          ),),
+                          ),
                         ],
                       ),
                     ),
