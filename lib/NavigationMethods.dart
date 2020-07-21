@@ -8,35 +8,44 @@ import 'package:EventOut/Chat/chatRoom.dart';
 import 'package:EventOut/MainPage/MainBody.dart';
 import 'package:EventOut/Chat/ContactList.dart';
 import 'package:EventOut/constants/constants.dart';
+import 'TaskScreens/task_screen.dart';
+import 'calendar/calendar.dart';
 
-Future navigateToProfileCompleter(context) async {
+
+void navigateToProfileCompleter(context) async {
   Navigator.pushNamed(context, ProfileCompleter.id);
 }
+void navigateToCalendar(context) async {
+  Navigator.pushNamed(context, Calendar.id);
+}
+void navigateToTaskScreen(context) async {
+  Navigator.pushNamed(context, TaskHandler.id);
+}
 
-Future navigateToClubList(context) async {
+void navigateToClubList(context) async {
   Navigator.pushNamed(context, ClubList.id);
 }
 
-Future navigateToContactList(context) async {
+void navigateToContactList(context) async {
   Navigator.pushNamed(context, ContactList.id);
 }
 
- Future navigateToMainBody(context ) async {
+ void navigateToMainBody(context ) async {
    Navigator.pushNamed(context, MainBody.id );
  }
-Future navigateToGoogleorEmail(context) async {
+void navigateToGoogleorEmail(context) async {
   Navigator.pushNamed(context, Googleoremail.id);
 }
 
-Future navigateToLogin(context) async {
+void navigateToLogin(context) async {
   Navigator.pushNamed(context, Login.id);
 }
-Future navigationToOrganizationPageMainBody(context , OrganizationClass temp) async {
+void navigationToOrganizationPageMainBody(context , OrganizationClass temp) async {
   Navigator.pushNamed( context , OrganizationPageMainBody.id,arguments: temp,
   );
 }
 
-Future navigateToChatRoom(
+void navigateToChatRoom(
     {BuildContext context,
     String group,
     String subGroupId,
@@ -45,7 +54,7 @@ Future navigateToChatRoom(
       arguments: ChatRoomArguments(group, subGroupId, type));
 }
 
-Future navigateToEventList(context, String groupId) async {
+void navigateToEventList(context, String groupId) async {
   Navigator.pushNamed(context, EventList.id, arguments: groupId);
 }
 

@@ -10,6 +10,7 @@ import 'package:EventOut/Chat/ContactList.dart';
 import 'SharedPreferencesMethods.dart';
 import 'package:EventOut/OrganizationPage/OrganizationPageMainBody.dart';
 import 'NavigationMethods.dart';
+import 'calendar/calendar.dart';
 //import 'demo2.dart';
 
 void main() async {
@@ -44,15 +45,17 @@ class MyApp extends StatelessWidget {
         MainBody.id: (context) => MainBody(),
         TaskHandler.id: (context) => TaskHandler(),
         OrganizationPageMainBody.id : (context)=> OrganizationPageMainBody(),
+        Calendar.id : (context)=> Calendar(),
         //Bringingguests2.id: (context) => Bringingguests2(),
       },
+      initialRoute: initialRoute,
 
-      home: MainBody(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         backgroundColor: const Color(0xff101010),
         accentColor: const Color(0xff734F96),
       ),
+
     );
   }
 }

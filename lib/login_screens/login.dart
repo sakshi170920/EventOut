@@ -1,3 +1,4 @@
+import 'package:EventOut/MainPage/MainBody.dart';
 import 'package:EventOut/SharedPreferencesMethods.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -192,7 +193,7 @@ class _LoginState extends State<Login> {
                                         else {
                                           setEmail(email);
                                           await setLoginStatus(true);
-                                          //navigateToMainBody(context);
+                                          Navigator.of(context).pushNamedAndRemoveUntil(MainBody.id, (route) => false);
                                         }
                                       } catch (e) {
                                         print('invalid user');

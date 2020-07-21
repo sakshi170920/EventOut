@@ -1,3 +1,4 @@
+import 'package:EventOut/MainPage/MainBody.dart';
 import 'package:flutter/material.dart';
 import 'package:EventOut/LoginDatabase/LoginDetails.dart';
 import 'package:EventOut/NavigationMethods.dart';
@@ -156,7 +157,7 @@ class _ProfileCompleterState extends State<ProfileCompleter> {
 
                     if (register) {
                       await setLoginStatus(true);
-                      navigateToContactList(context);
+                      Navigator.of(context).pushNamedAndRemoveUntil(MainBody.id, (route) => false);
                     } else
                       print('invalid register');
                     setState(() {

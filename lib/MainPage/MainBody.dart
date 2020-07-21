@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:EventOut/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -7,6 +8,9 @@ import 'MainBottomPart.dart';
 import 'OrganizationCard.dart';
 import 'OrganizationClass.dart';
 import 'package:EventOut/NavigationMethods.dart';
+import 'AppDrawer.dart';
+
+final GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey();
 List<OrganizationClass> us = [];
 class MainBody extends StatefulWidget {
   static String id = 'MainBody';
@@ -25,8 +29,10 @@ class _MainBodyState extends State<MainBody> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldKey,
       extendBodyBehindAppBar: true,
       appBar: buildAppBar(),
+      drawer: AppDrawer(),
       body: Stack(
         children: <Widget>[
           MainPageBG(),
@@ -141,11 +147,17 @@ AppBar buildAppBar() {
     elevation: 0,
     leading: Container(
         margin: EdgeInsets.only(left: constPadding, top: constPadding),
-        child: Icon(Icons.drag_handle)),
+        child: GestureDetector(
+          onTap: (){
+            scaffoldKey.currentState.openDrawer();
+          },
+          child: Icon(Icons.drag_handle),
+        ),
+    ),
     actions: <Widget>[
       Container(
           decoration: BoxDecoration(
-              color: Color(0xFF8A56AC),
+              color: Purple,
               borderRadius: BorderRadius.circular(500)),
           margin: EdgeInsets.only(right: constPadding, top: constPadding),
           alignment: Alignment.center,
@@ -161,3 +173,5 @@ AppBar buildAppBar() {
     centerTitle: true,
   );
 }
+
+

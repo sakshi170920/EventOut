@@ -1,30 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-void main() {
-  runApp(MyApp());
-}
 
-class MyApp extends StatelessWidget{
+class Calendar extends StatefulWidget {
+  static String id = "Calendar";
+
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Calendar',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: HomePage(),
-    );
-  }
+  _CalendarState createState() => _CalendarState();
 }
 
-class HomePage extends StatefulWidget
-{
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
+class _CalendarState extends State<Calendar> {
   CalendarController _controller;
 
   @override
